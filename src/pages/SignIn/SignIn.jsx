@@ -12,6 +12,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import SignUp from '../SignUp/SignUp';
+import UserService from '../../Service/UserService';
+
+const userService =  new UserService();
+
 
 function Copyright(props: any) {
   return (
@@ -29,15 +34,33 @@ function Copyright(props: any) {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+  const email = / d/;
+  const password = / ds /;
+
+  const [inputField , setInputField] = React.useState({
+    
+    "email": "",
+    "password": "",
+    
+})
+
+const inputsHandler = (e) =>{
+  setInputField( ...inputField, {[e.target.name]: e.target.value} )
+}
+
+  const handleSubmit = () => {
+   
+    const data = new FormData();
+    data.set("email", data.get("email"))
+    data.set("password", data.get("password"))
+    
+    userService.SignIn(data)
+     
+        .then((response) => response)
+        
+        .catch(err => { console.log(err) });
+      
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -57,7 +80,7 @@ export default function SignIn() {
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+          <Box component="form" action="http://localhost:3000/loginDetails" method="get" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -107,7 +130,7 @@ export default function SignIn() {
                 </Link>
               </Grid> */}
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href='#' variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>
