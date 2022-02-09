@@ -1,78 +1,54 @@
 {
   "loginDetails": [
-    {
-      "id": 1,
-      "email": "valarr@gmail.com",
-      "password": "Mathi@01"
-    },
-    {
-      "id": 2,
-      "email": "karthi@gmail.com",
-      "password": "karthi@01"
-    },
-    {
-      "id": 3,
-      "email": "bala@gmail.com",
-      "password": "bala@01"
-    },
-    {
-      "id": 4,
-      "email": "karthi@gmail.com",
-      "password": "Kar@01"
-    },
-    {
-      "id": 5,
-      "email": "vv@gmail.com",
-      "password": "V@01"
-    },
+    
     {
       "firstName": "m",
       "lastName": "c",
       "email": "mc@gmail.com",
       "password": "M@123",
-      "id": 8
+      "id": 1
     },
     {
       "firstName": "Valarmathy",
       "lastName": "R",
       "email": "valr@gmail.com",
       "password": "V@123",
-      "id": 9
+      "id": 2
     },
     {
       "firstName": "Xman",
       "lastName": "p",
       "email": "xp@gmail.com",
       "password": "X@123",
-      "id": 10
+      "id": 3
     },
     {
       "firstName": "Valarmathy",
       "lastName": "r",
-      "email": "\"valar123456@gmail.com\"",
+      "email": "valar123456@gmail.com",
       "password": "12345",
-      "id": 11
+      "id": 4
     },
     {
       "firstName": "valar",
       "lastName": "m",
       "email": "vm@gmail.com",
       "password": "12345",
-      "id": 13
+      "id": 5
     },
     {
       "firstName": "Nisha",
       "lastName": "Shree",
       "email": "nisha",
       "password": "n@12345",
-      "id": 14
+      "id": 6
     },
     {
       "firstName": "Bala",
       "lastName": "bb",
       "email": "b@gmail.com",
       "password": "b@12345",
-      "id": 15
+      "id": 7
     }
   ]
 }
