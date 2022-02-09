@@ -1,0 +1,51 @@
+{
+  "loginDetails": [
+    {
+      "id": 1,
+      "email": "valarr@gmail.com",
+      "password": "Mathi@01"
+    },
+    {
+      "id": 2,
+      "email": "karthi@gmail.com",
+      "password": "karthi@01"
+    },
+    {
+      "id": 3,
+      "email": "bala@gmail.com",
+      "password": "bala@01"
+    },
+    {
+      "id": 4,
+      "email": "karthi@gmail.com",
+      "password": "Kar@01"
+    },
+    {
+      "id": 5,
+      "email": "vv@gmail.com",
+      "password": "V@01"
+    },
+  
+    {
+      "firstName": "m",
+      "lastName": "c",
+      "email": "mc@gmail.com",
+      "password": "M@123",
+      "id": 8
+    },
+    {
+      "firstName": "Valarmathy",
+      "lastName": "R",
+      "email": "valr@gmail.com",
+      "password": "V@123",
+      "id": 9
+    },
+    {
+      "firstName": "Xman",
+      "lastName": "p",
+      "email": "xp@gmail.com",
+      "password": "X@123",
+      "id": 10
+    }
+  ]
+}
