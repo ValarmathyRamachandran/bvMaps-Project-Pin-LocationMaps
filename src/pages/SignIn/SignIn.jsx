@@ -14,9 +14,10 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SignUp from '../SignUp/SignUp';
 import UserService from '../../Service/UserService';
+import { GoogleLogin } from 'react-google-login';
+
 
 const userService =  new UserService();
-
 
 function Copyright(props: any) {
   return (
@@ -31,6 +32,13 @@ function Copyright(props: any) {
   );
 }
 
+
+
+
+const responseGoogle = (response) => {
+  console.log(response);
+}
+
 const theme = createTheme();
 
 export default function SignIn() {
@@ -41,27 +49,62 @@ export default function SignIn() {
     
     "email": "",
     "password": "",
-    
-})
+  });
+
+  const[warnemail,setwarnemail]=React.useState(false);
+  const[warnpassword,setwarnpassword]=React.useState(false);
+
+  // const[eye,seteye]=useState(true);
+  // const[password,setpassword]=React.useState("password");
+  const[type,settype]=React.useState(false);
 
 const inputsHandler = (e) =>{
-  setInputField( ...inputField, {[e.target.name]: e.target.value} )
+
+  const name=e.target.name;
+  const value=e.target.value;
+  setInputField((lastValue)=>{
+  return{
+  ...lastValue,
+  [name]:value
+  }
+});
+
 }
 
-  const handleSubmit = () => {
-   
-    const data = new FormData();
-    data.set("email", data.get("email"))
-    data.set("password", data.get("password"))
-    
-    userService.SignIn(data)
-     
-        .then((response) => response)
-        
-        .catch(err => { console.log(err) });
-      
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setwarnemail(false);
+    setwarnpassword(false);
 
+    if(inputField.email == ""){
+      setwarnemail(true);
+      }
+    else if(inputField.password == ""){
+      setwarnpassword(true);
+      }
+    else{
+      const data = new FormData();
+      data.set("email", data.get("email"))
+      data.set("password", data.get("password"))
+      
+      userService.SignIn(data)
+      
+          .then((response) => ( response.json()))
+          .catch(err => { console.log(err) });
+    
+    if((inputField.email) && (inputField.password) == data){
+
+      var newfindArray= data.find((user) => ((inputField.email ==user.email)))
+      console.log(newfindArray);
+    }
+    // alert("form submitted");
+  }
+    }
+   
+   
+       
+  
+  
   return (
     <ThemeProvider theme={theme}>
       <Container component="main" maxWidth="xs">
@@ -80,7 +123,8 @@ const inputsHandler = (e) =>{
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <Box component="form" action="http://localhost:3000/loginDetails" method="get" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+        
+          <Box component="form" action="" onSubmit={handleSubmit} method="get" Validate sx={{ mt: 1 }}>
             <TextField
               margin="normal"
               required
@@ -88,18 +132,24 @@ const inputsHandler = (e) =>{
               id="email"
               label="Email Address"
               name="email"
+              placeholder="Please Enter your email" 
+              value={inputField.email}
               autoComplete="email"
               autoFocus
+              onChange={inputsHandler}
             />
             <TextField
               margin="normal"
               required
               fullWidth
               name="password"
+              placeholder="Please Enter your password"
               label="Password"
               type="password"
               id="password"
+              value={inputField.password}
               autoComplete="current-password"
+              onChange={inputsHandler}
             />
             {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
@@ -118,9 +168,17 @@ const inputsHandler = (e) =>{
               type="submit"
             //   fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 ,width:'42%', marginLeft:'10vh',backgroundColor:' #dc3545'}}
+              sx={{ mt: 3, mb: 2 ,width:'43%', marginLeft:'10vh',backgroundColor:' white',padding:0,borderRadius:0,borderShawdow:'none !important'}}
             >
-              Sign in with Google
+                <GoogleLogin
+        clientId="131606195347-ljfhgavk6ed088ljm9ag39hrpmjt8j4g.apps.googleusercontent.com"
+        buttonText="Sign In 
+        with Google"
+        onSuccess={responseGoogle}
+        onFailure={responseGoogle}
+        cookiePolicy={'single_host_origin'}
+        sx={{ mt: 4, mb: 2 ,width:'42%', marginLeft:'5vh',backgroundColor:' transparent',border:'none !important' }}
+  /> 
             </Button>
             </div>
             <Grid container>
@@ -141,4 +199,4 @@ const inputsHandler = (e) =>{
       </Container>
     </ThemeProvider>
   );
-}
+            }

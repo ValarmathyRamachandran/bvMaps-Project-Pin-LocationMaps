@@ -53,9 +53,7 @@ export default function SignUp() {
     }
 
     const handleSubmit= ()=> {
-        // Prevent default behavior
-        
-    
+      
         const data = new FormData();
         // Access FormData fields with `data.get(fieldName)`
        
@@ -63,7 +61,6 @@ export default function SignUp() {
         data.set("lastName", data.get("lastName"))
         data.set("email", data.get("email"))
         data.set("password", data.get("password"))
-        // data.set("service", "advance")
 
     userService.SignUp(data)
     .then((response) => response.json())
@@ -138,12 +135,7 @@ export default function SignUp() {
                   onChange={inputsHandler}
                 />
               </Grid>
-              {/* <Grid item xs={12}>
-                <FormControlLabel
-                  control={<Checkbox value="allowExtraEmails" color="primary" />}
-                  label="I want to receive inspiration, marketing promotions and updates via email."
-                />
-              </Grid> */}
+           
             </Grid>
             <div ClassName="SignUp-btn-main-Container"  sx={{display:'flex' ,justifyContent:'space-around'   }}>
             <Button

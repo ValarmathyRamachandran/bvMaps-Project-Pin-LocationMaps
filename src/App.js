@@ -2,13 +2,18 @@ import logo from './logo.svg';
 import './App.css';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
+import Dashboard from './pages/Dashboard/Dashboard';
+import OpenStreetMap from './Component/OpenStreetMap';
+
 
 
 function App() {
   return (
     <div className="App">
-      <SignIn />
-      <SignUp />
+      {/* <SignIn />
+      <SignUp /> *<OpenStreetMap /> */}
+      <Dashboard />
+      {/* <OpenStreetMap /> */}
     </div>
   );
 }

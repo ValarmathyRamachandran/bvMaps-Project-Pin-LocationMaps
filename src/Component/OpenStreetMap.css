@@ -1,0 +1,8 @@
+
+.leaflet-container{
+    height: 600px;
+    width: 80%;
+    /* border: 2px solid red; */
+    margin-left: 100px;
+    margin-top: 1%;
+}
