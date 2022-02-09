@@ -1,26 +1,32 @@
-import AxioService from "./AxioService";
+import axios from 'axios'
 
-const userService = new AxioService();
 
-let baseurl='http://fundoonotes.incubation.bridgelabz.com/api/';
-
-let header={
-  headers: {
-    // 'Content-Type': 'application/json',
+let content = {
+    headers: {
+      "Content-Type": "application/json"
+    },
   }
+
+export const UserSignup = async () => {
+    let response = await axios.get("http://localhost:3000/loginDetails",
+    content
+    )
+    return response
 }
 
-class UserService{
-
-    SignUp(data){
-       return userService.postMethod(`${baseurl}user/userSignUp`,data)
-    }
-
-    SignIn(data){
-        return userService.getMethod(`${baseurl}user/login`,data)
-    }
-
-   
+export const UserSignupPost = async (obj) => {
+  let response = await axios.post("http://localhost:3000/loginDetails",
+  JSON.stringify(obj),
+  content
+  )
+  return response
 }
 
-export default UserService;
+export const UserSignupPut = async (obj,data) => {
+  console.log(obj)
+  let response = await axios.put(`http://localhost:3000/loginDetails/${obj}`,
+  JSON.stringify(data),
+  content
+  )
+  return response
+}

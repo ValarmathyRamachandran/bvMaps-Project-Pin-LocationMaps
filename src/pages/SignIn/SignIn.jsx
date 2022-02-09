@@ -12,12 +12,14 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import SignUp from '../SignUp/SignUp';
-import UserService from '../../Service/UserService';
 import { GoogleLogin } from 'react-google-login';
+import { UserSignup,UserSignupPost } from "../../Service/UserService";
+import { useNavigate } from "react-router-dom";
 
 
-const userService =  new UserService();
+const responseGoogle = (response) => {
+  console.log(response);
+}
 
 function Copyright(props: any) {
   return (
@@ -29,34 +31,22 @@ function Copyright(props: any) {
       {new Date().getFullYear()}
       {'.'}
     </Typography>
-  );
-}
-
-
-
-
-const responseGoogle = (response) => {
-  console.log(response);
-}
-
+  )
+};
 const theme = createTheme();
 
-export default function SignIn() {
-  const email = / d/;
-  const password = / ds /;
+const  SignIn = () => {
 
-  const [inputField , setInputField] = React.useState({
+  const [signinInputField , setInputField] = React.useState({
     
     "email": "",
     "password": "",
   });
 
-  const[warnemail,setwarnemail]=React.useState(false);
-  const[warnpassword,setwarnpassword]=React.useState(false);
+  const [filterArray,setfilterArray] = React.useState([])
+  const [success,setsuccess] = React.useState([])
 
-  // const[eye,seteye]=useState(true);
-  // const[password,setpassword]=React.useState("password");
-  const[type,settype]=React.useState(false);
+  let navigate = useNavigate();
 
 const inputsHandler = (e) =>{
 
@@ -70,36 +60,36 @@ const inputsHandler = (e) =>{
 });
 
 }
+const getsignup = () => {
+  UserSignup().then((response) => {
+  console.log(response)
+  setfilterArray(response.data) })
+  .catch((err) => { console.log(err) 
+  })
+}
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setwarnemail(false);
-    setwarnpassword(false);
+  const handleSubmit = () => {
+ 
+    console.log(signinInputField.email,signinInputField.password)
+  
 
-    if(inputField.email == ""){
-      setwarnemail(true);
-      }
-    else if(inputField.password == ""){
-      setwarnpassword(true);
-      }
-    else{
-      const data = new FormData();
-      data.set("email", data.get("email"))
-      data.set("password", data.get("password"))
-      
-      userService.SignIn(data)
-      
-          .then((response) => ( response.json()))
-          .catch(err => { console.log(err) });
+    let findArray = filterArray.find((user)=>
+    ((signinInputField.email == user.email) && (signinInputField.password == user.password)))
+    console.log("test",findArray)
     
-    if((inputField.email) && (inputField.password) == data){
-
-      var newfindArray= data.find((user) => ((inputField.email ==user.email)))
-      console.log(newfindArray);
-    }
-    // alert("form submitted");
+    if(findArray){
+      alert("success login")
+      localStorage.setItem("token",findArray.email)
+      navigate('/dashboard')
+  } else {
+      alert("invalid username and Password")
   }
-    }
+  
+  }
+
+  React.useEffect(()=>{
+    getsignup()
+  },[])
    
    
        
@@ -133,7 +123,7 @@ const inputsHandler = (e) =>{
               label="Email Address"
               name="email"
               placeholder="Please Enter your email" 
-              value={inputField.email}
+              value={signinInputField.email}
               autoComplete="email"
               autoFocus
               onChange={inputsHandler}
@@ -147,18 +137,14 @@ const inputsHandler = (e) =>{
               label="Password"
               type="password"
               id="password"
-              value={inputField.password}
+              value={signinInputField.password}
               autoComplete="current-password"
               onChange={inputsHandler}
             />
-            {/* <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            /> */}
+          
             <div ClassName="SignIn-btn-main-Container"  sx={{display:'flex' ,justifyContent:'space-around'   }}>
             <Button
               type="submit"
-            //   fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 ,width:'43%' }}
             >
@@ -166,9 +152,8 @@ const inputsHandler = (e) =>{
             </Button>
             <Button
               type="submit"
-            //   fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2 ,width:'43%', marginLeft:'10vh',backgroundColor:' white',padding:0,borderRadius:0,borderShawdow:'none !important'}}
+              sx={{ mt: 3, mb: 2 ,width:'43%', marginLeft:'8vh',backgroundColor:' white',padding:0,borderRadius:0,borderShawdow:'none !important'}}
             >
                 <GoogleLogin
         clientId="131606195347-ljfhgavk6ed088ljm9ag39hrpmjt8j4g.apps.googleusercontent.com"
@@ -177,7 +162,7 @@ const inputsHandler = (e) =>{
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
         cookiePolicy={'single_host_origin'}
-        sx={{ mt: 4, mb: 2 ,width:'42%', marginLeft:'5vh',backgroundColor:' transparent',border:'none !important' }}
+        sx={{ mt: 4, mb: 2 ,width:'42%', marginLeft:'0vh',backgroundColor:' transparent',border:'none !important' }}
   /> 
             </Button>
             </div>
@@ -198,5 +183,8 @@ const inputsHandler = (e) =>{
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
-  );
-            }
+  )
+}
+
+
+export default SignIn;

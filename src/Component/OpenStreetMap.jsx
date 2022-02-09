@@ -35,28 +35,36 @@ const OpenStreetMap =() => {
       const handleClose = () => {
         setOpen(false);
       };
+
+      const getMap =(data) =>{
+        console.log(data);
+      }
    
     return (
         <>
             {/* <Header title="bv Maps" /> */}
             <div className="bvMaps-main">
                 <div className="bvMaps-text">
-                    {/* <h2>Welcome to bv Maps</h2> */}
                 
-                       <div className="map-container"  onClick={handleClickOpen}> 
+                       <div className="map-container" > 
                        <MapContainer center={centre}
                                 zoom={ZOOM_LEVEL}
-                                ref={mapRef} >
+                                ref={mapRef} 
+                                whenReady={(map) =>{map.target.on("click",function (e){
+                                     console.log(e)
+                                      getMap(e.latlng.lat)
+                                });
+                              }}>
                               
                               
 
                             <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution }
                             />
 
-                            <Marker position={[13.084622,80.248357]} Icon={icon}  >
+                            <Marker position={[13.084622,80.248357]} icon={markerIcon}  >
 
                                 <Popup>
-                                    <b>Pin location</b>
+                                    <b  onClick={handleClickOpen}>Pin location</b>
                                 </Popup>
     
                             </Marker>
@@ -68,7 +76,7 @@ const OpenStreetMap =() => {
         Open form dialog
       </Button> */}
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Maps</DialogTitle>
+        <DialogTitle>Save your Location </DialogTitle>
         <DialogContent>
           <DialogContentText>
             Please enter the location here:
@@ -77,7 +85,7 @@ const OpenStreetMap =() => {
             autoFocus
             margin="dense"
             id="name"
-            label="Pin Location"
+            label="save your location name as "
             type="text"
             fullWidth
             variant="standard"

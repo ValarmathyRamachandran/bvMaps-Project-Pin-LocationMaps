@@ -12,10 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import UserService from '../../Service/UserService';
+// import UserService from '../../Service/UserService';
 import { useEffect, useState } from "react";
 
-const userService =  new UserService();
+// const userService =  new UserService();
 
 function Copyright(props: any) {
   return (
@@ -62,7 +62,7 @@ export default function SignUp() {
         data.set("email", data.get("email"))
         data.set("password", data.get("password"))
 
-    userService.SignUp(data)
+    // userService.SignUp(data)
     .then((response) => response.json())
 
       .catch(err => { console.log(err) });
