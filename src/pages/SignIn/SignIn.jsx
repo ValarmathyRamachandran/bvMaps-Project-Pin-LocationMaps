@@ -37,14 +37,13 @@ const theme = createTheme();
 
 const  SignIn = () => {
 
-  const [signinInputField , setInputField] = React.useState({
+  const [signinInputField , setsigninInputField] = React.useState({
     
     "email": "",
     "password": "",
   });
 
   const [filterArray,setfilterArray] = React.useState([])
-  const [success,setsuccess] = React.useState([])
 
   let navigate = useNavigate();
 
@@ -52,14 +51,14 @@ const inputsHandler = (e) =>{
 
   const name=e.target.name;
   const value=e.target.value;
-  setInputField((lastValue)=>{
+  setsigninInputField((lastValue)=>{
   return{
   ...lastValue,
   [name]:value
   }
 });
-
 }
+
 const getsignup = () => {
   UserSignup().then((response) => {
   console.log(response)
@@ -70,10 +69,11 @@ const getsignup = () => {
 
   const handleSubmit = () => {
  
-    console.log(signinInputField.email,signinInputField.password)
+    // console.log(signinInputField.email,signinInputField.password)
   
 
     let findArray = filterArray.find((user)=>
+    // console.log(signinInputField.email)
     ((signinInputField.email == user.email) && (signinInputField.password == user.password)))
     console.log("test",findArray)
     
@@ -91,9 +91,6 @@ const getsignup = () => {
     getsignup()
   },[])
    
-   
-       
-  
   
   return (
     <ThemeProvider theme={theme}>
@@ -123,7 +120,6 @@ const getsignup = () => {
               label="Email Address"
               name="email"
               placeholder="Please Enter your email" 
-              value={signinInputField.email}
               autoComplete="email"
               autoFocus
               onChange={inputsHandler}
@@ -137,7 +133,6 @@ const getsignup = () => {
               label="Password"
               type="password"
               id="password"
-              value={signinInputField.password}
               autoComplete="current-password"
               onChange={inputsHandler}
             />
@@ -173,7 +168,7 @@ const getsignup = () => {
                 </Link>
               </Grid> */}
               <Grid item>
-                <Link href='#' variant="body2">
+                <Link to = '/signup' variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

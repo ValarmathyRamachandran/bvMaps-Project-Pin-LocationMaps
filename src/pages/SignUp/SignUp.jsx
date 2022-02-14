@@ -14,6 +14,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 // import UserService from '../../Service/UserService';
 import { useEffect, useState } from "react";
+import { UserSignup,UserSignupPost } from "../../Service/UserService";
 
 // const userService =  new UserService();
 
@@ -32,13 +33,7 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-export default function SignUp() {
-
-  const firstName = / dds /;
-  const lastName=/ ddd /;
-  const email = / d/;
-  const password = / ds /;
- 
+ const SignUp = () => {
 
     const [inputField , setInputField] = React.useState({
         "firstName": "",
@@ -47,26 +42,34 @@ export default function SignUp() {
         "password": "",
         
     })
+    const [findArray,setfindArray] = useState([])
 
     const inputsHandler = (e) =>{
         setInputField( ...inputField, {[e.target.name]: e.target.value} )
     }
 
-    const handleSubmit= ()=> {
-      
-        const data = new FormData();
-        // Access FormData fields with `data.get(fieldName)`
-       
-        data.set("firstName", data.get("firstName"))
-        data.set("lastName", data.get("lastName"))
-        data.set("email", data.get("email"))
-        data.set("password", data.get("password"))
-
-    // userService.SignUp(data)
-    .then((response) => response.json())
-
-      .catch(err => { console.log(err) });
+    const getsignup = () =>{
+      UserSignup().then(function(response){
+          setfindArray(response.data)
+          console.log(response)
+      }).catch((err)=>{
+          console.log(err)
+      })
     }
+
+    const handleSubmit= ()=> {
+      var findArray1 = findArray.find((user)=>((inputField.email == user.email)))
+      if(findArray1) {
+        alert("User email already exists")}
+      else {
+          alert("Please check your details and click ok to proceed")
+      }
+     }
+
+      React.useEffect(()=>{
+        getsignup()
+    
+      },[])
 
   
   return (
@@ -87,7 +90,8 @@ export default function SignUp() {
           <Typography component="h1" variant="h5">
             Sign up
           </Typography>
-          <Box component="form" Validate  action="http://localhost:3000/loginDetails" method="post" onSubmit={handleSubmit} sx={{ mt: 3 }}>
+
+          <Box component="form" Validate  action="" method="post" onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
@@ -155,7 +159,7 @@ export default function SignUp() {
             </div>
             <Grid container justifyContent="flex-start">
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link to ="/" variant="body2">
                   Already have an account? Sign in
                 </Link>
               </Grid>
@@ -166,4 +170,7 @@ export default function SignUp() {
       </Container>
     </ThemeProvider>
   );
-}
+        }
+      
+
+export default SignUp;

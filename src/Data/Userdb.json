@@ -1,6 +1,5 @@
 {
   "loginDetails": [
-    
     {
       "firstName": "m",
       "lastName": "c",
@@ -33,7 +32,7 @@
       "firstName": "valar",
       "lastName": "m",
       "email": "vm@gmail.com",
-      "password": "12345",
+      "password": "123456",
       "id": 5
     },
     {
@@ -49,6 +48,139 @@
       "email": "b@gmail.com",
       "password": "b@12345",
       "id": 7
+    },
+    {
+      "firstName": "Jayanth",
+      "lastName": "Murali",
+      "email": "jm@gmail.com",
+      "password": "j@12345",
+      "id": 8
+    }
+  ],
+  "Location1": [
+    {
+      "lat": 13.337956860750824,
+      "lng": 79.85121378674106,
+      "user": "vm@gmail.com",
+      "id": 6
+    },
+    {
+      "lat": 13.32726663863191,
+      "lng": 80.18605040247546,
+      "user": "vm@gmail.com",
+      "id": 7
+    },
+    {
+      "lat": 13.091962827048919,
+      "lng": 80.26289815034893,
+      "user": "vm@gmail.com",
+      "place": "",
+      "id": 8
+    },
+    {
+      "lat": 13.481338131315917,
+      "lng": 80.18605040247546,
+      "user": "vm@gmail.com",
+      "Place": "place",
+      "id": 9
+    },
+    {
+      "lat": 13.473325289678515,
+      "lng": 80.1970286521717,
+      "user": "vm@gmail.com",
+      "Place": "place",
+      "id": 10
+    },
+    {
+      "lat": 13.016488581104271,
+      "lng": 79.69748434765144,
+      "user": "vm@gmail.com",
+      "Place": "place",
+      "id": 11
+    },
+    {
+      "lat": 13.012920536089245,
+      "lng": 79.7578998289622,
+      "user": "vm@gmail.com",
+      "Place": "place",
+      "id": 12
+    },
+    {
+      "lat": 12.845611349938597,
+      "lng": 79.71158451187578,
+      "user": "vm@gmail.com",
+      "Place": "place",
+      "id": 13
+    },
+    {
+      "lat": 12.937979891665599,
+      "lng": 80.07623736191942,
+      "user": "vm@gmail.com",
+      "Place": "place",
+      "id": 14
+    },
+    {
+      "lat": 13.368577270807366,
+      "lng": 79.6370294973766,
+      "user": "vm@gmail.com",
+      "Place": "",
+      "id": 15
+    },
+    {
+      "lat": 13.232258845818203,
+      "lng": 79.90329926525571,
+      "user": "vm@gmail.com",
+      "Place": "",
+      "id": 16
+    },
+    {
+      "lat": 12.774638521708114,
+      "lng": 79.91702451102267,
+      "user": "vm@gmail.com",
+      "Place": "",
+      "id": 17
+    },
+    {
+      "lat": 12.53076935519451,
+      "lng": 79.60957900584268,
+      "user": "vm@gmail.com",
+      "Place": "",
+      "id": 18
+    },
+    {
+      "lat": 12.680870283898466,
+      "lng": 79.9060443144091,
+      "user": "vm@gmail.com",
+      "Place": "",
+      "id": 19
+    },
+    {
+      "lat": 13.117821656790085,
+      "lng": 79.91180419921876,
+      "user": "vm@gmail.com",
+      "Place": "homeee",
+      "id": 20
+    },
+    {
+      "lat": 13.117821656790085,
+      "lng": 79.91180419921876,
+      "user": "vm@gmail.com",
+      "Place": "homeee",
+      "id": 21
+    },
+    {
+      "lat": 13.117821656790085,
+      "lng": 79.91180419921876,
+      "user": "vm@gmail.com",
+      "Place": "",
+      "id": 22
+    },
+    {
+      "lat": 12.504515019391881,
+      "lng": 80.1177978515625,
+      "user": "vm@gmail.com",
+      "Place": "ooo",
+      "id": 23
     }
   ]
 }

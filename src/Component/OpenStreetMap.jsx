@@ -14,6 +14,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { getmapLocation, PinnedLocation } from "../Service/AxioService";
+import TabularView from "./TabluarView/TabluarView";
+import DailogBox from "./DialogBox/DailogBox";
+
 
 const markerIcon = new L.Icon({
     iconUrl: require('../../src/asset/markerImage.png'),
@@ -25,84 +29,107 @@ const markerIcon = new L.Icon({
 const OpenStreetMap =() => {
    const [centre,setCentre] =useState({ lat: 13.084622, lng:80.248357});
    const [open, setOpen] = React.useState(false);
+  const [getlatlngData,setlatlngData] =React.useState([]);
+   const [locationdata,setlocationdata] = React.useState({lat:"",lng:"",user:"",Place:""})
+   const[getsave,setsave] = React.useState(false);
+  const [getdetails,setdetails] = React.useState([]);
+
    const ZOOM_LEVEL = 9;
      const mapRef = useRef();
 
-     const handleClickOpen = () => {
-        setOpen(true);
-      };
+     const Listentoplace = (e) => {
+     
+      setlocationdata({...locationdata,Place:e.target.value})
+
+   }
+   console.log(locationdata.Place)
+
+    //  const handleClickOpen = () => {
+    //     setOpen(true);
+    //   };
     
-      const handleClose = () => {
-        setOpen(false);
-      };
+      // const handleClose = () => {
+      //   setOpen(false);
+      // };
 
       const getMap =(data) =>{
+        setOpen(true);
         console.log(data);
+       setOpen(true);
+        // if (getsave == true){
+        console.log("testing...")
+        const {lat, lng} = data.latlng
+        // setlocationdata({...locationdata,lat:lat ,lng:lng, user:localStorage.getItem("token")})
+        let data1 = {
+          lat:lat,
+          lng:lng,
+          user:localStorage.getItem("token"),
+          // Place:locationdata.Place
+        }
+        setdetails(data1)
+        console.log(data1)
+
+
+
+      
+      // }
+      
       }
-   
+
+      // const save = () =>{
+      //   setsave(true);
+      // }
+      
+
+      const getlocation = () =>{
+        getmapLocation().then((res) => {
+          console.log(res.data);
+          setlatlngData(res.data) 
+          
+        }).catch((err) => {console.log(err)
+        })
+      }
+      console.log(getlatlngData)
+
+      React.useEffect(() =>{
+        getlocation()
+      },[])
     return (
         <>
-            {/* <Header title="bv Maps" /> */}
             <div className="bvMaps-main">
                 <div className="bvMaps-text">
                 
-                       <div className="map-container" > 
-                       <MapContainer center={centre}
+                      <div className="map-container" > 
+                      <MapContainer center={centre}
                                 zoom={ZOOM_LEVEL}
                                 ref={mapRef} 
+                              
                                 whenReady={(map) =>{map.target.on("click",function (e){
                                      console.log(e)
-                                      getMap(e.latlng.lat)
+                                     const { lat, lng } = e.latlng;
+                                      getMap(e)
                                 });
                               }}>
-                              
-                              
 
                             <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution }
                             />
 
-                            <Marker position={[13.084622,80.248357]} icon={markerIcon}  >
-
-                                <Popup>
-                                    <b  onClick={handleClickOpen}>Pin location</b>
-                                </Popup>
-    
-                            </Marker>
-                        </MapContainer></div>
-                        <div>
-
-                        
-      {/* <Button variant="outlined" >
-        Open form dialog
-      </Button> */}
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Save your Location </DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Please enter the location here:
-          </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="name"
-            label="save your location name as "
-            type="text"
-            fullWidth
-            variant="standard"
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ok</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
- 
-
-                </div>
-            </div>
-        
-        </>
+                    {getlatlngData.map((city,idx) => 
+                    <Marker position={[city.lat, city.lng]} icon={markerIcon} key={idx}>
+                                                <Popup>
+                                                <b >Pin</b>
+                                                </Popup>
+                    
+                    </Marker> )}
+                      </MapContainer></div>
+                      <div>
+                        {open?<DailogBox getdetails={getdetails} />: null}
+      
+      </div>
+      </div>
+      </div>
+       <TabularView /> 
+    </>
     )
 }
 
