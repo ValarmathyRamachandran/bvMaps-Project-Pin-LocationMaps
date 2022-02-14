@@ -6,7 +6,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { PinnedLocation } from '../../Service/AxioService';
+import { PinnedLocation, getmapLocation } from '../../Service/AxioService';
 
 export default function DailogBox(props) {
     const[Open,setOpen] = React.useState(true);
@@ -30,6 +30,8 @@ export default function DailogBox(props) {
         PinnedLocation(saveObj).then((res)=> {
             console.log(res)
             setOpen(false)
+            getmapLocation();
+            
             
            
           }).catch((err)=>{

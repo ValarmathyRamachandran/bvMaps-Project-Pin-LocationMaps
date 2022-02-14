@@ -7,6 +7,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import { getmapLocation } from '../../Service/AxioService';
+import OpenStreetMap from '../OpenStreetMap';
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -29,17 +31,46 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(id, user, Latitude, Longitude, Place,Action) {
-  return { id, user, Latitude, Longitude, Place,Action };
-}
+// function createData(id, user, Latitude, Longitude, Place,Action) {
+//   return { id, user, Latitude, Longitude, Place,Action };
+// }
 
-const rows = [
-  createData(1,'vm@gmail.com',13.909,80.65,'Home','Edit')
-];
+// const rows = [
+//   createData(1,'vm@gmail.com',13.909,80.65,'Home','Edit')
+// ];
 
-export default function TabularView() {
+export default function TabularView(props) {
+
+  console.log(props)
+    const [tabledata,settabledata] = React.useState([])
+    const [openmap,setopenmap] = React.useState(false)
+    const [editdata,seteditdata] = React.useState([])
+ 
+    const gettabledata = () => {
+      getmapLocation().then((res) => {
+          console.log(res)
+          settabledata(res.data)
+      }).catch((err) => {
+          console.log(err)
+      })
+  }
+
+  const handleedit = (data) => {
+    setopenmap(true)
+    console.log("testing",data)
+    seteditdata(data)
+  }
+
+
+  React.useEffect(()=> {
+    gettabledata()
+  },[])
+
+
   return (
     <TableContainer component={Paper}>
+
+      {openmap ? <div className="mapview"> <OpenStreetMap editdata={handleedit} /> </div> :
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
@@ -52,22 +83,24 @@ export default function TabularView() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {tabledata.map((row) => (
             <StyledTableRow key={row.name}>
               {/* <StyledTableCell component="th" scope="row">
               {row.id}
               </StyledTableCell> */}
              <StyledTableCell align="left">{row.id}</StyledTableCell>
               <StyledTableCell align="centre">{row.user}</StyledTableCell>
-              <StyledTableCell align="centre">{row.Latitude}</StyledTableCell>
-              <StyledTableCell align="centre">{row.Longitude}</StyledTableCell>
+              <StyledTableCell align="centre">{row.lat}</StyledTableCell>
+              <StyledTableCell align="centre">{row.lng}</StyledTableCell>
               <StyledTableCell align="centre">{row.Place}</StyledTableCell>
               <StyledTableCell align="centre">{row.Action}</StyledTableCell>
             </StyledTableRow>
           ))}
         </TableBody>
       </Table>
+}
     </TableContainer>
+            
   );
 }
 

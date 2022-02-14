@@ -55,7 +55,7 @@ const OpenStreetMap =() => {
       const getMap =(data) =>{
         setOpen(true);
         console.log(data);
-       setOpen(true);
+    
         // if (getsave == true){
         console.log("testing...")
         const {lat, lng} = data.latlng
@@ -94,6 +94,7 @@ const OpenStreetMap =() => {
       React.useEffect(() =>{
         getlocation()
       },[])
+
     return (
         <>
             <div className="bvMaps-main">
@@ -128,7 +129,7 @@ const OpenStreetMap =() => {
       </div>
       </div>
       </div>
-       <TabularView /> 
+       {/* <TabularView />  */}
     </>
     )
 }
