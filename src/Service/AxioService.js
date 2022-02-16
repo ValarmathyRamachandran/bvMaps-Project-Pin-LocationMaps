@@ -43,5 +43,13 @@ export const Posteditdata = async (obj,data) => {
     return response
 }
 
+export const Posthistory = async (obj) => {
+    let response = await axios.post("http://localhost:3000/history",
+    obj,
+    content
+    )
+    return response
+  }
+
 
   

@@ -7,7 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import { getmapLocation, deleteLocation } from '../../Service/AxioService';
+import { getmapLocation, deleteLocation, Posthistory } from '../../Service/AxioService';
 import OpenStreetMap from '../OpenStreetMap';
 import EditLocationAltTwoToneIcon from '@mui/icons-material/EditLocationAltTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
@@ -64,7 +64,9 @@ export default function TabularView(props) {
       if (window.confirm("Are you sure that you want to delete this location?")) {
 
           const del = tabledata.filter((delData) => delData.id !== id )
+          const deletedData = tabledata.filter((delData) => delData.id == id )
                 console.log(del)
+                Posthistory(deletedData)
 
               deleteLocation(id) 
                 .then(res => {
