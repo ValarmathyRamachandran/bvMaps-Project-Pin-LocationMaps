@@ -115,13 +115,6 @@
       "id": 33
     },
     {
-      "lat": 13.221563968068331,
-      "lng": 80.03906249650755,
-      "user": "vm@gmail.com",
-      "Place": "edited",
-      "id": 36
-    },
-    {
       "lat": 12.955378838959463,
       "lng": 80.12832641252318,
       "user": "vm@gmail.com",
@@ -148,97 +141,14 @@
       "user": "vm@gmail.com",
       "Place": "temple",
       "id": 40
+    }
+  ],
+  "history": [
+    {
+      "id": 1
     },
     {
-      "lat": 13.100378388641282,
-      "lng": 79.88136291329285,
-      "user": "vm@gmail.com",
-      "Place": "home",
-      "id": 41
-    },
-    {
-      "lat": 13.078475027303307,
-      "lng": 79.63668822892943,
-      "user": "vm@gmail.com",
-      "Place": "homeb",
-      "id": 42
-    },
-    {
-      "lat": 13.137436892241475,
-      "lng": 80.2734374930151,
-      "user": "vm@gmail.com",
-      "Place": "test",
-      "id": 43
-    },
-    {
-      "lat": 13.345974217036591,
-      "lng": 79.77355956332758,
-      "user": "vm@gmail.com",
-      "Place": "edit location",
-      "id": 44
-    },
-    {
-      "lat": 13.309003081222373,
-      "lng": 80.04867553361693,
-      "user": "vm@gmail.com",
-      "Place": "editttt",
-      "id": 45
-    },
-    {
-      "lat": 13.163040216474549,
-      "lng": 79.90620304794288,
-      "user": "vm@gmail.com",
-      "Place": "testing",
-      "id": 46
-    },
-    {
-      "lat": 13.3480341858244,
-      "lng": 79.99982389805896,
-      "user": "vm@gmail.com",
-      "Place": "test",
-      "id": 47
-    },
-    {
-      "lat": 13.374283376179338,
-      "lng": 79.9548339773901,
-      "user": "vm@gmail.com",
-      "Place": "edited test",
-      "id": 48
-    },
-    {
-      "lat": 13.539896050071835,
-      "lng": 79.9987792898901,
-      "user": "vm@gmail.com",
-      "Place": "edited",
-      "id": 49
-    },
-    {
-      "lat": 13.237606108691363,
-      "lng": 79.94018554338255,
-      "user": "vm@gmail.com",
-      "Place": "edittted loc",
-      "id": 50
-    },
-    {
-      "lat": 13.093188950348846,
-      "lng": 80.03356933244505,
-      "user": "vm@gmail.com",
-      "Place": "edit testt",
-      "id": 51
-    },
-    {
-      "lat": 13.221563968068331,
-      "lng": 80.05004882463255,
-      "user": "vm@gmail.com",
-      "Place": "editttt",
-      "id": 52
-    },
-    {
-      "lat": 13.403312812713242,
-      "lng": 80.04455566057005,
-      "user": "vm@gmail.com",
-      "Place": "edit loccc",
-      "id": 53
+      "id": 2
     }
   ]
 }

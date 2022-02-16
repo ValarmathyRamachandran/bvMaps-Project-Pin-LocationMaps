@@ -8,6 +8,7 @@ let content = {
 let id = localStorage.getItem("token")
 
 
+
 export const PinnedLocation = async (obj) => {
     console.log(obj)
     let response = await axios.post("http://localhost:3000/Location1",
@@ -29,6 +30,14 @@ export const Posteditdata = async (obj,data) => {
     console.log(obj)
     let response = await axios.put(`http://localhost:3000/Location1/${obj}`,
     data,
+    content
+    )
+    return response
+}
+
+ export const deleteLocation = async (obj) => {
+    let response = await axios.delete(`http://localhost:3000/Location1/${obj} `,
+    obj,
     content
     )
     return response
