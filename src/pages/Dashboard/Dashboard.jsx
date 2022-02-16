@@ -37,8 +37,8 @@ const Dashboard = ({ children }) => {
       
       </div>
       <div className="container">
-        <aside className={`${isOpened ? "opened" : ""} drawer`}>Maps
-        <p className={`${isOpened ? "opened" : ""} drawer`}>Location</p></aside>
+        <aside className={`${isOpened ? "opened" : ""} drawer`}>Pinned Location
+        <p className={`${isOpened ? "opened" : ""} drawer`}>Heat Map </p></aside>
         <main className="main">{children}
         {checked? <OpenStreetMap /> :<TabularView/>}
         </main>

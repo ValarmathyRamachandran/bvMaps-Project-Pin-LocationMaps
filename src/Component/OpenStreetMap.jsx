@@ -23,73 +23,64 @@ const markerIcon = new L.Icon({
     iconUrl: require('../../src/asset/markerImage.png'),
     iconSize: [25,35],
     iconAnchor:[17,46],// left/reight 
-    popupAnchor:[0,-46],
-    
+    popupAnchor:[0,-46]
 })
-const OpenStreetMap =() => {
+
+const OpenStreetMap =(props) => {
+
    const [centre,setCentre] =useState({ lat: 13.084622, lng:80.248357});
    const [open, setOpen] = React.useState(false);
-  const [getlatlngData,setlatlngData] =React.useState([]);
+   const [getlatlngData,setlatlngData] =React.useState([]);
    const [locationdata,setlocationdata] = React.useState({lat:"",lng:"",user:"",Place:""})
    const[getsave,setsave] = React.useState(false);
-  const [getdetails,setdetails] = React.useState([]);
+   const [getdetails,setdetails] = React.useState([]);
+   
+   const [editmapdata,seteditmapdata] = React.useState(-1)
 
    const ZOOM_LEVEL = 9;
-     const mapRef = useRef();
+   const mapRef = useRef();
 
-     const Listentoplace = (e) => {
-     
-      setlocationdata({...locationdata,Place:e.target.value})
 
-   }
-   console.log(locationdata.Place)
-
-    //  const handleClickOpen = () => {
-    //     setOpen(true);
-    //   };
-    
-      // const handleClose = () => {
-      //   setOpen(false);
-      // };
+    const Listentoplace = (e) => {
+    setlocationdata({...locationdata,Place:e.target.value})
+    }
+  
 
       const getMap =(data) =>{
         setOpen(true);
         console.log(data);
-    
-        // if (getsave == true){
-        console.log("testing...")
         const {lat, lng} = data.latlng
-        // setlocationdata({...locationdata,lat:lat ,lng:lng, user:localStorage.getItem("token")})
         let data1 = {
           lat:lat,
           lng:lng,
-          user:localStorage.getItem("token"),
-          // Place:locationdata.Place
+          user:localStorage.getItem("token")
         }
         setdetails(data1)
         console.log(data1)
-
-
-
-      
-      // }
-      
       }
 
-      // const save = () =>{
-      //   setsave(true);
-      // }
-      
+     
+      const listenToDialogBox =(data) =>{
+          if(data == true ){
+            getlocation();
+          }
+      }
 
       const getlocation = () =>{
         getmapLocation().then((res) => {
-          console.log(res.data);
-          setlatlngData(res.data) 
-          
-        }).catch((err) => {console.log(err)
-        })
+        console.log(res)
+      
+         if(props.editdata){
+          setlatlngData([props.editdata])
+          seteditmapdata(props.editdata) 
+          } else {
+            setlatlngData(res.data)
+            console.log(res.data)
+          } 
+          }).catch((err) => {console.log(err)
+          })
       }
-      console.log(getlatlngData)
+
 
       React.useEffect(() =>{
         getlocation()
@@ -124,12 +115,11 @@ const OpenStreetMap =() => {
                     </Marker> )}
                       </MapContainer></div>
                       <div>
-                        {open?<DailogBox getdetails={getdetails} />: null}
+                      {open?<DailogBox getdetails={getdetails}  listenToDialogBox ={listenToDialogBox} editmapdata={editmapdata}  />: null}
       
       </div>
       </div>
       </div>
-       {/* <TabularView />  */}
     </>
     )
 }

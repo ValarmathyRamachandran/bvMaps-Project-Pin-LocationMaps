@@ -6,12 +6,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import { PinnedLocation, getmapLocation } from '../../Service/AxioService';
+import { PinnedLocation, getmapLocation,Posteditdata } from '../../Service/AxioService';
 
 export default function DailogBox(props) {
+  console.log(props)
     const[Open,setOpen] = React.useState(true);
     const[placeValue,setplaceValue]  = React.useState("")
     console.log(props)
+
     const handleClose = () => {
         setOpen(false);
     };
@@ -21,22 +23,36 @@ export default function DailogBox(props) {
     }
 
     const save = () =>{
-      let  saveObj = {
-            lat:props.getdetails.lat,
+        if(props.editmapdata ){
+          console.log(props.editmapdata.id)
+            let data ={
+              lat:props.getdetails.lat,
+              lng:props.getdetails.lng,
+              user:localStorage.getItem("token"),
+              Place:placeValue
+          
+            }
+              Posteditdata(props.editmapdata.id,data)
+                .then((res)=>{
+                 console.log(res)
+                 setOpen(false)     
+                 }).catch((err)=> {
+                   console.log(err)
+              })         
+        }else{ 
+          let  saveObj = {
+          lat:props.getdetails.lat,
           lng:props.getdetails.lng,
           user:localStorage.getItem("token"),
           Place:placeValue
-        }
+          }
         PinnedLocation(saveObj).then((res)=> {
             console.log(res)
-            setOpen(false)
-            getmapLocation();
-            
-            
-           
+            setOpen(false);
+            props.listenToDialogBox(true)
           }).catch((err)=>{
             console.log(err)
-         })
+         })}
     }
 
   return (
@@ -67,4 +83,3 @@ export default function DailogBox(props) {
   )
 }
 
-// export default DailogBox;

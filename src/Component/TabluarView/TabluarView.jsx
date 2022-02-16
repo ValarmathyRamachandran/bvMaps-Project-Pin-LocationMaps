@@ -9,7 +9,9 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { getmapLocation } from '../../Service/AxioService';
 import OpenStreetMap from '../OpenStreetMap';
-
+import EditLocationAltTwoToneIcon from '@mui/icons-material/EditLocationAltTwoTone';
+import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
+import MapTwoToneIcon from '@mui/icons-material/MapTwoTone';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -44,18 +46,21 @@ export default function TabularView(props) {
   console.log(props)
     const [tabledata,settabledata] = React.useState([])
     const [openmap,setopenmap] = React.useState(false)
-    const [editdata,seteditdata] = React.useState([])
+    const [editdata,seteditdata] = React.useState([]);
+    
  
     const gettabledata = () => {
       getmapLocation().then((res) => {
           console.log(res)
           settabledata(res.data)
+          // console.log(res.data.length);
       }).catch((err) => {
           console.log(err)
       })
   }
 
   const handleedit = (data) => {
+    
     setopenmap(true)
     console.log("testing",data)
     seteditdata(data)
@@ -70,12 +75,12 @@ export default function TabularView(props) {
   return (
     <TableContainer component={Paper}>
 
-      {openmap ? <div className="mapview"> <OpenStreetMap editdata={handleedit} /> </div> :
+      {openmap ? <div className="mapview"> <OpenStreetMap editdata={editdata} /> </div> :
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="left">Id</StyledTableCell>
-            <StyledTableCell align="centre">User</StyledTableCell>
+            {/* <StyledTableCell align="left">Id</StyledTableCell>
+            <StyledTableCell align="centre">User</StyledTableCell> */}
             <StyledTableCell align="centre">Latitude&nbsp;</StyledTableCell>
             <StyledTableCell align="centre">Longitude&nbsp;</StyledTableCell>
             <StyledTableCell align="centre">Place&nbsp;</StyledTableCell>
@@ -88,12 +93,24 @@ export default function TabularView(props) {
               {/* <StyledTableCell component="th" scope="row">
               {row.id}
               </StyledTableCell> */}
-             <StyledTableCell align="left">{row.id}</StyledTableCell>
-              <StyledTableCell align="centre">{row.user}</StyledTableCell>
+             {/* <StyledTableCell align="left">{row.id}</StyledTableCell>
+              <StyledTableCell align="centre">{row.user}</StyledTableCell> */}
               <StyledTableCell align="centre">{row.lat}</StyledTableCell>
               <StyledTableCell align="centre">{row.lng}</StyledTableCell>
               <StyledTableCell align="centre">{row.Place}</StyledTableCell>
-              <StyledTableCell align="centre">{row.Action}</StyledTableCell>
+             {row.lat != null ? 
+              <StyledTableCell align="centre">
+                {row.Action}
+              <div>
+                <a>< EditLocationAltTwoToneIcon   onClick={() => handleedit(row)} />
+                <DeleteTwoToneIcon/>
+                <MapTwoToneIcon />
+
+                </a>
+              </div>
+              </StyledTableCell>
+              :null}
+
             </StyledTableRow>
           ))}
         </TableBody>
@@ -103,5 +120,4 @@ export default function TabularView(props) {
             
   );
 }
-
 

@@ -38,13 +38,13 @@
     {
       "firstName": "Nisha",
       "lastName": "Shree",
-      "email": "nisha",
+      "email": "nisha@gmail.com",
       "password": "n@12345",
       "id": 6
     },
     {
       "firstName": "Bala",
-      "lastName": "bb",
+      "lastName": "V",
       "email": "b@gmail.com",
       "password": "b@12345",
       "id": 7
@@ -59,46 +59,186 @@
   ],
   "Location1": [
     {
-      "lat": 13.117821656790085,
-      "lng": 70.91180419921876,
+      "lat": 12.83222178112691,
+      "lng": 79.72257446323869,
+      "user": "b@gmail.com",
+      "Place": "Bala Home",
+      "id": 26
+    },
+    {
+      "lat": 13.638646809414787,
+      "lng": 79.4205772531281,
+      "user": "b@gmail.com",
+      "Place": "bala fav",
+      "id": 27
+    },
+    {
+      "lat": 12.960732116760276,
+      "lng": 80.11821271230352,
+      "user": "b@gmail.com",
+      "Place": "famous place",
+      "id": 28
+    },
+    {
+      "lat": 13.249637020870106,
+      "lng": 79.11263216259701,
+      "user": "b@gmail.com",
+      "Place": "temple",
+      "id": 29
+    },
+    {
+      "lat": 13.418007109190974,
+      "lng": 79.55497770495424,
+      "user": "b@gmail.com",
+      "Place": "common",
+      "id": 30
+    },
+    {
+      "lat": 12.958055492245812,
+      "lng": 79.12362211395993,
+      "user": "b@gmail.com",
+      "Place": "vellore",
+      "id": 31
+    },
+    {
+      "lat": 12.966085279451407,
+      "lng": 79.30761684157879,
+      "user": "b@gmail.com",
+      "Place": "vhome",
+      "id": 32
+    },
+    {
+      "lat": 12.510659890520282,
+      "lng": 79.33243118985524,
+      "user": "b@gmail.com",
+      "Place": "chome",
+      "id": 33
+    },
+    {
+      "lat": 13.221563968068331,
+      "lng": 80.03906249650755,
+      "user": "vm@gmail.com",
+      "Place": "edited",
+      "id": 36
+    },
+    {
+      "lat": 12.955378838959463,
+      "lng": 80.12832641252318,
+      "user": "vm@gmail.com",
+      "Place": "Office",
+      "id": 37
+    },
+    {
+      "lat": 13.129301215619071,
+      "lng": 80.24917602189818,
       "user": "vm@gmail.com",
       "Place": "home",
-      "id": 20
+      "id": 38
     },
     {
-      "lat": 13.117821656790085,
-      "lng": 79.71180419921876,
+      "lat": 12.842933493232605,
+      "lng": 80.21347045549193,
       "user": "vm@gmail.com",
-      "Place": "church",
-      "id": 21
+      "Place": "hotel",
+      "id": 39
     },
     {
-      "lat": 13.117821656790085,
-      "lng": 69.91180419921876,
+      "lat": 13.111998083368189,
+      "lng": 79.98310089024018,
       "user": "vm@gmail.com",
-      "Place": "park",
-      "id": 22
+      "Place": "temple",
+      "id": 40
     },
     {
-      "lat": 12.504515019391881,
-      "lng": 80.1177978515625,
+      "lat": 13.100378388641282,
+      "lng": 79.88136291329285,
       "user": "vm@gmail.com",
-      "Place": "office",
-      "id": 23
+      "Place": "home",
+      "id": 41
     },
     {
-      "lat": 13.324482645660462,
-      "lng": 80.17865744479954,
+      "lat": 13.078475027303307,
+      "lng": 79.63668822892943,
       "user": "vm@gmail.com",
-      "Place": "Hotel",
-      "id": 24
+      "Place": "homeb",
+      "id": 42
     },
     {
-      "lat": 13.094526536154126,
-      "lng": 80.27756700706577,
+      "lat": 13.137436892241475,
+      "lng": 80.2734374930151,
       "user": "vm@gmail.com",
-      "Place": "Fav",
-      "id": 25
+      "Place": "test",
+      "id": 43
+    },
+    {
+      "lat": 13.345974217036591,
+      "lng": 79.77355956332758,
+      "user": "vm@gmail.com",
+      "Place": "edit location",
+      "id": 44
+    },
+    {
+      "lat": 13.309003081222373,
+      "lng": 80.04867553361693,
+      "user": "vm@gmail.com",
+      "Place": "editttt",
+      "id": 45
+    },
+    {
+      "lat": 13.163040216474549,
+      "lng": 79.90620304794288,
+      "user": "vm@gmail.com",
+      "Place": "testing",
+      "id": 46
+    },
+    {
+      "lat": 13.3480341858244,
+      "lng": 79.99982389805896,
+      "user": "vm@gmail.com",
+      "Place": "test",
+      "id": 47
+    },
+    {
+      "lat": 13.374283376179338,
+      "lng": 79.9548339773901,
+      "user": "vm@gmail.com",
+      "Place": "edited test",
+      "id": 48
+    },
+    {
+      "lat": 13.539896050071835,
+      "lng": 79.9987792898901,
+      "user": "vm@gmail.com",
+      "Place": "edited",
+      "id": 49
+    },
+    {
+      "lat": 13.237606108691363,
+      "lng": 79.94018554338255,
+      "user": "vm@gmail.com",
+      "Place": "edittted loc",
+      "id": 50
+    },
+    {
+      "lat": 13.093188950348846,
+      "lng": 80.03356933244505,
+      "user": "vm@gmail.com",
+      "Place": "edit testt",
+      "id": 51
+    },
+    {
+      "lat": 13.221563968068331,
+      "lng": 80.05004882463255,
+      "user": "vm@gmail.com",
+      "Place": "editttt",
+      "id": 52
+    },
+    {
+      "lat": 13.403312812713242,
+      "lng": 80.04455566057005,
+      "user": "vm@gmail.com",
+      "Place": "edit loccc",
+      "id": 53
     }
   ]
 }

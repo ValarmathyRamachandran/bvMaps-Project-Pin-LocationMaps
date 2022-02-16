@@ -31,19 +31,24 @@
 .container {
   display: flex;
   flex: 1;
+
 }
+
 
 .drawer {
   background: #d8dcd6;
   width: 0px;
   transition: width 0.7s;
+  
 }
 
 .opened {
   width: 240px;
+  
 }
 
 .main {
   flex: 1;
   background: #f7f5f5;
 }
+
