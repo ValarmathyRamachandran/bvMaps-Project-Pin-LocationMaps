@@ -59,17 +59,10 @@
   ],
   "Location1": [
     {
-      "lat": 12.83222178112691,
-      "lng": 79.72257446323869,
-      "user": "b@gmail.com",
-      "Place": "Bala Home",
-      "id": 26
-    },
-    {
-      "lat": 13.638646809414787,
-      "lng": 79.4205772531281,
-      "user": "b@gmail.com",
-      "Place": "bala fav",
+      "lat": 13.644985918479177,
+      "lng": 79.38674926408568,
+      "user": "vm@gmail.com",
+      "Place": "edited Location",
       "id": 27
     },
     {
@@ -115,13 +108,6 @@
       "id": 33
     },
     {
-      "lat": 12.955378838959463,
-      "lng": 80.12832641252318,
-      "user": "vm@gmail.com",
-      "Place": "Office",
-      "id": 37
-    },
-    {
       "lat": 13.383273688554363,
       "lng": 79.33731078752318,
       "user": "vm@gmail.com",
@@ -130,9 +116,6 @@
     }
   ],
   "history": [
-    {
-      "id": 27
-    },
     [
       {
         "lat": 13.129301215619071,
@@ -140,6 +123,15 @@
         "user": "vm@gmail.com",
         "Place": "home",
         "id": 38
+      }
+    ],
+    [
+      {
+        "lat": 12.955378838959463,
+        "lng": 80.12832641252318,
+        "user": "vm@gmail.com",
+        "Place": "Office",
+        "id": 37
       }
     ]
   ]

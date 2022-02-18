@@ -6,6 +6,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import OpenStreetMap from "../../Component/OpenStreetMap";
 import Switch from '@mui/material/Switch';
 import TabularView from "../../Component/TabluarView/TabluarView";
+import HeatMap from "../../Component/HeatMap/HeatMap";
 
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
@@ -38,12 +39,15 @@ const Dashboard = ({ children }) => {
       </div>
       <div className="container">
         <aside className={`${isOpened ? "opened" : ""} drawer`}>Pinned Location
-        <p className={`${isOpened ? "opened" : ""} drawer`}>Heat Map </p></aside>
+        <p className={`${isOpened ? "opened" : ""} drawer`}  >Heat Map </p></aside>
         <main className="main">{children}
         {checked? <OpenStreetMap /> :<TabularView/>}
+    
         </main>
       </div>
+      <HeatMap/>
       <div className="footer">@bv-maps.com</div>
+      
     </div>
   );
 };
