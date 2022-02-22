@@ -7,6 +7,9 @@ import OpenStreetMap from "../../Component/OpenStreetMap";
 import Switch from '@mui/material/Switch';
 import TabularView from "../../Component/TabluarView/TabluarView";
 import HeatMap from "../../Component/HeatMap/HeatMap";
+import DialogBoxHeatMap from "../../Component/HeatMap/DialogBoxHeatMap";
+
+
 
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
@@ -14,11 +17,23 @@ const label = { inputProps: { 'aria-label': 'Switch demo' } };
 const Dashboard = ({ children }) => {
   const [isOpened, setIsOpened] = useState(false);
   const [checked,setChecked]= useState(true)
+  const [heatMap,setHeatMap] =useState(false)
+  const[sideNav,getsideNav] = useState(false)
 
   const handleChange = (event) => {
     console.log(event.target.checked)
     setChecked(event.target.checked);
   };
+
+
+
+
+  const getheatmapDailogBox =() =>{
+    setChecked(false)
+    setHeatMap(true)
+    getsideNav(true)
+  
+  }
 
 
   return (
@@ -38,14 +53,15 @@ const Dashboard = ({ children }) => {
       
       </div>
       <div className="container">
-        <aside className={`${isOpened ? "opened" : ""} drawer`}>Pinned Location
-        <p className={`${isOpened ? "opened" : ""} drawer`}  >Heat Map </p></aside>
+        <aside className={`${isOpened ? "opened" : ""} drawer`} >Pinned Location
+        <p className={`${isOpened ? "opened" : ""} drawer`} onClick={getheatmapDailogBox}   >Heat Map </p></aside>
         <main className="main">{children}
-        {checked? <OpenStreetMap /> :<TabularView/>}
-    
+        {checked?<OpenStreetMap /> :heatMap? <HeatMap/> : <TabularView/> }
+    {/* {  heatMap? <HeatMap/> :null} */}
+    {sideNav ? <DialogBoxHeatMap /> :null}
         </main>
       </div>
-      <HeatMap/>
+     {/* <HeatMap/> */}
       <div className="footer">@bv-maps.com</div>
       
     </div>
