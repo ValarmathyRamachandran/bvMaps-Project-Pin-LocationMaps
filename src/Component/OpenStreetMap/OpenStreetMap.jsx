@@ -1,26 +1,18 @@
 import React,{ useState } from "react";
-import 'leaflet/dist/leaflet.css';
+import "leaflet/dist/leaflet.css";
 import{ MapContainer,TileLayer ,Marker, Popup } from "react-leaflet";
-import osm from "./osm-providers"; 
+
 import L from "leaflet"; 
 import { useRef } from "react";
-import '../Component/OpenStreetMap.css';
-import Popper from '@mui/material/Popper';
-import icon from '../../src/asset/markerImage.png';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
-import { getmapLocation, PinnedLocation } from "../Service/AxioService";
-import TabularView from "./TabluarView/TabluarView";
-import DailogBox from "./DialogBox/DailogBox";
+import"./OpenStreetMap.scss";
+
+import { getmapLocation } from "../../Service/AxioService";
+import DailogBox from "../DialogBox/DailogBox";
+import osm from "../osm-providers";
 
 
 const markerIcon = new L.Icon({
-    iconUrl: require('../../src/asset/markerImage.png'),
+    iconUrl: require('../../asset/markerImage.png'),
     iconSize: [25,35],
     iconAnchor:[17,46],// left/reight 
     popupAnchor:[0,-46]
@@ -29,11 +21,12 @@ const markerIcon = new L.Icon({
 const OpenStreetMap =(props) => {
 
    const [centre,setCentre] =useState({ lat: 13.084622, lng:80.248357});
-   const [open, setOpen] = React.useState(false);
-   const [getlatlngData,setlatlngData] =React.useState([]);
-   const [locationdata,setlocationdata] = React.useState({lat:"",lng:"",user:"",Place:""})
-   const[getsave,setsave] = React.useState(false);
-   const [getdetails,setdetails] = React.useState([]);
+   const [open, setOpen] = useState(false);
+   const [latlngData,setlatlngData] =useState([]);
+   const [locationdata,setlocationdata] = useState({lat:"",lng:"",user:"",Place:""})
+   const[getsave,setsave] = useState(false);
+   const [getdetails,setdetails] = useState([]);
+   
    
    const [editmapdata,seteditmapdata] = React.useState(-1)
 
@@ -48,12 +41,13 @@ const OpenStreetMap =(props) => {
 
       const getMap =(data) =>{
         setOpen(true);
-        console.log(data);
+        console.log(data.latlng);
         const {lat, lng} = data.latlng
         let data1 = {
           lat:lat,
           lng:lng,
-          user:localStorage.getItem("token")
+          user:localStorage.getItem("token"),
+          city:props.Place
         }
         setdetails(data1)
         console.log(data1)
@@ -61,7 +55,8 @@ const OpenStreetMap =(props) => {
 
      
       const listenToDialogBox =(data) =>{
-          if(data == true ){
+        setOpen(data)
+          if(data == false ){
             getlocation();
           }
       }
@@ -86,6 +81,17 @@ const OpenStreetMap =(props) => {
         getlocation()
       },[])
 
+      // const renderMarker = () => {
+      //   return (
+      //     getlatlngData.map((city,idx) => 
+      //       <Marker position={[city.lat, city.lng]} icon={markerIcon} key={idx}>
+      //                                   <Popup>
+      //                                   <b >Pin</b>
+      //                                   </Popup>
+            
+      //       </Marker> )
+      //   )
+      // }
     return (
         <>
             <div className="bvMaps-main">
@@ -102,11 +108,9 @@ const OpenStreetMap =(props) => {
                                       getMap(e)
                                 });
                               }}>
-
-                            <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution }
-                            />
-
-                    {getlatlngData.map((city,idx) => 
+        <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution }/>
+                      {/* {props.showMarker? renderMarker():null} */}
+                      {latlngData.map((city,idx) => 
                     <Marker position={[city.lat, city.lng]} icon={markerIcon} key={idx}>
                                                 <Popup>
                                                 <b >Pin</b>
@@ -123,5 +127,6 @@ const OpenStreetMap =(props) => {
     </>
     )
 }
+
 
 export default OpenStreetMap;

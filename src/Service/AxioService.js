@@ -8,7 +8,6 @@ let content = {
 let id = localStorage.getItem("token")
 
 
-
 export const PinnedLocation = async (obj) => {
     console.log(obj)
     let response = await axios.post("http://localhost:3000/Location1",
@@ -50,6 +49,42 @@ export const Posthistory = async (obj) => {
     )
     return response
   }
+
+  export const PostheatMap= async (data) => {
+    let response = await axios.post(`http://localhost:3000/heatmapLocations`,
+    data,
+    content
+    )
+    return response
+}
+
+export const getheatMap= async () => {
+    let response = await axios.get(`http://localhost:3000/heatmapLocations`,
+   
+    content
+    )
+    return response
+}
+
+
+export const postOsmHeatMap= async (data) => {
+    let response = await axios.post(`http://localhost:3000/SideMenuData`,
+    data,
+    content
+    )
+    return response
+}
+
+export const getOsmHeatMapMarker= async () => {
+    let response = await axios.get(`http://localhost:3000/SideMenuData`,
+    content
+    )
+    return response
+}
+
+  
+  
+
 
 
   

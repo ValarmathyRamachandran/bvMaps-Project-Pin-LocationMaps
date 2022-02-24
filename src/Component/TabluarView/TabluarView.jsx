@@ -8,7 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { getmapLocation, deleteLocation, Posthistory } from '../../Service/AxioService';
-import OpenStreetMap from '../OpenStreetMap';
+import OpenStreetMap from '../OpenStreetMap/OpenStreetMap';
 import EditLocationAltTwoToneIcon from '@mui/icons-material/EditLocationAltTwoTone';
 import DeleteTwoToneIcon from '@mui/icons-material/DeleteTwoTone';
 import MapTwoToneIcon from '@mui/icons-material/MapTwoTone';

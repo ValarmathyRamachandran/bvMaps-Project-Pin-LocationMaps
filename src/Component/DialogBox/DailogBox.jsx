@@ -23,7 +23,7 @@ export default function DailogBox(props) {
     }
 
     const save = () =>{
-        if(props.editmapdata ){
+        if(props.editmapdata > 0 ){
           console.log(props.editmapdata.id)
             let data ={
               lat:props.getdetails.lat,
@@ -48,8 +48,8 @@ export default function DailogBox(props) {
           }
         PinnedLocation(saveObj).then((res)=> {
             console.log(res)
-            setOpen(false);
             props.listenToDialogBox(true)
+            setOpen(false);
           }).catch((err)=>{
             console.log(err)
          })}
@@ -77,7 +77,7 @@ export default function DailogBox(props) {
     </DialogContent>
     <DialogActions>
       <Button onClick={handleClose}>Cancel</Button>
-      <Button onClick={save}   >Ok</Button>
+      <Button onClick={() =>save()}   >Ok</Button>
     </DialogActions>
   </Dialog></div>
   )

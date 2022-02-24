@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import SignIn from './pages/SignIn/SignIn';
 import SignUp from './pages/SignUp/SignUp';
 import Dashboard from './pages/Dashboard/Dashboard';
-import OpenStreetMap from './Component/OpenStreetMap';
+import OpenStreetMap from './Component/OpenStreetMap/OpenStreetMap';
 
 import {
   BrowserRouter as Router,
