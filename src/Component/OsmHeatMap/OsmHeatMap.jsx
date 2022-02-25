@@ -1,7 +1,7 @@
 import React,{ useState } from "react";
 import 'leaflet/dist/leaflet.css';
 import{ MapContainer,TileLayer,Marker, Popup  } from "react-leaflet";
-import osmProviders from "../osm-providers";
+import osm from "../osm-providers";
 import L from "leaflet"; 
 import { useRef } from "react";
 import DailogBox from "../DialogBox/DailogBox";
@@ -21,7 +21,7 @@ const OsmHeatMap =(props) => {
    const [latlngData,setlatlngData] =useState();
 
 
-   const ZOOM_LEVEL = 9;
+   const ZOOM_LEVEL = 8;
    const mapRef = useRef();
 
   
@@ -72,7 +72,7 @@ const OsmHeatMap =(props) => {
                                 });
                               }}>
 
-                        <TileLayer url={osmProviders.maptiler.url} attribution={osmProviders.maptiler.attribution} />
+                        <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution} />
                         {renderMarker()}
                  {/* {true? renderMarker():null}  */}
                       </MapContainer></div>

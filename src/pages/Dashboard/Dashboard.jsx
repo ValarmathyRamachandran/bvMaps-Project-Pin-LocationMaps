@@ -17,6 +17,7 @@ import OsmHeatMap from "../../Component/OsmHeatMap/OsmHeatMap";
 
 
 
+
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 export default function Dashboard ({ children ,props}) {
@@ -34,18 +35,25 @@ const[osmHeatMap,setosmHeatMap] = useState("")
 const [city,setcity] =useState("");
 
   const updateAddNew = () =>{
-    setShowAddNew(true);
+    
+    setChecked(false)
+    setHeatMap(false)
+    setsideMenu(true)
+    setShowAddNew(true)
   }
 
   const handleAddMoreLoc = () => {
     setChecked(true);
     setShowMarker(false)
+
+ 
 }
 
   const handleChange = (event) => {
     console.log(event.target.checked)
     setChecked(event.target.checked);
   };
+
   const getsideNavheatmapData = () => {
     console.log('inside useeffect');
     getheatMap().then((res) => {
@@ -61,8 +69,18 @@ const [city,setcity] =useState("");
   const getheatmapDailogBox =() =>{
     setChecked(false)
     setHeatMap(true)
+
   }
 
+  const getPinnedLocation =() => {
+    setChecked(false)
+    
+    
+    
+   
+   
+    console.log("pinned")
+  }
 
   React.useEffect(()=> {
     getsideNavheatmapData()
@@ -71,18 +89,12 @@ const [city,setcity] =useState("");
 
   const sideMenuIconClick= (menudata) => {
     console.log(menudata)
-    // setChecked(false)
-    setHeatMap(false)
+    
+    setHeatMap(true)
     setsideMenu(true)
     setChecked(false)
     setosmHeatMap(menudata)
     setShowMarkerOSM(true)
-   
-    
-    
-    
-   
-    
   };
 
   
@@ -130,15 +142,21 @@ const [city,setcity] =useState("");
       
       </div>
       <div className="container">
-        <aside className={`${isOpened ? "opened" : ""} drawer`} >Pinned Location
-        <p className={`${isOpened ? "opened" : ""} drawer`} onClick={getheatmapDailogBox}   >Heat Map </p>
+      
+
+        <aside button className={`${isOpened ? "opened" : ""} drawer`}   onClick={()=>getPinnedLocation()}>Pinned Location
+        <p button className={`${isOpened ? "opened" : ""} drawer`}  onClick={getheatmapDailogBox}>Heat Map </p>
+        
         {isOpened ? heatMapLocation():null}</aside>
+        
+
         <main className="main">{children}
         
    
 
-        {checked?<OpenStreetMap showMarker={showMarker} />
-         :heatMap? <HeatMap update={()=>updateAddNew()} handleAddMoreLoc={() =>handleAddMoreLoc()}/> :sideMenu? <OsmHeatMap menudata={osmHeatMap} showMarkerOSM={showMarkerOSM}/> :<TabularView/> }
+        {checked?<OpenStreetMap showMarker={showMarker}/>
+         :heatMap? <HeatMap update={()=>updateAddNew()} handleAddMoreLoc={() =>handleAddMoreLoc()} osmHeatMap={osmHeatMap}/> 
+         :sideMenu? <OsmHeatMap menudata={osmHeatMap} showMarkerOSM={showMarkerOSM}/> :<TabularView/> }
         {showAddNew ? <DialogBoxHeatMap  handleDialogHeatMap={handleDialogHeatMap} /> :null} 
        
         </main>

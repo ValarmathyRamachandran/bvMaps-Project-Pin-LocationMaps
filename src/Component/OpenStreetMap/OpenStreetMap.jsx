@@ -1,12 +1,12 @@
 import React,{ useState } from "react";
-import "leaflet/dist/leaflet.css";
+import 'leaflet/dist/leaflet.css';
 import{ MapContainer,TileLayer ,Marker, Popup } from "react-leaflet";
 
 import L from "leaflet"; 
 import { useRef } from "react";
 import"./OpenStreetMap.scss";
 
-import { getmapLocation } from "../../Service/AxioService";
+import { getmapLocation,postOsmHeatMap } from "../../Service/AxioService";
 import DailogBox from "../DialogBox/DailogBox";
 import osm from "../osm-providers";
 
@@ -20,7 +20,7 @@ const markerIcon = new L.Icon({
 
 const OpenStreetMap =(props) => {
 
-   const [centre,setCentre] =useState({ lat: 13.084622, lng:80.248357});
+   const [centre,setcentre] =useState({ lat:20.5937,lng:78.9629});
    const [open, setOpen] = useState(false);
    const [latlngData,setlatlngData] =useState([]);
    const [locationdata,setlocationdata] = useState({lat:"",lng:"",user:"",Place:""})
@@ -30,7 +30,7 @@ const OpenStreetMap =(props) => {
    
    const [editmapdata,seteditmapdata] = React.useState(-1)
 
-   const ZOOM_LEVEL = 9;
+   const ZOOM_LEVEL = 5;
    const mapRef = useRef();
 
 
@@ -51,6 +51,8 @@ const OpenStreetMap =(props) => {
         }
         setdetails(data1)
         console.log(data1)
+            
+  
       }
 
      
