@@ -13,26 +13,23 @@ import ListItemText from '@mui/material/ListItemText';
 import { List } from "@mui/material";
 import { getheatMap } from "../../Service/AxioService";
 import OsmHeatMap from "../../Component/OsmHeatMap/OsmHeatMap";
-
-
-
-
+import { useNavigate } from 'react-router-dom';
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
 export default function Dashboard ({ children ,props}) {
+  const navigate = useNavigate()
+
   const [isOpened, setIsOpened] = useState(false);
   const [checked,setChecked]= useState(true)
   const [heatMap,setHeatMap] =useState(false)
   const[showAddNew,setShowAddNew] = useState(false)
   const [heatmapData,setheatmapData] =React.useState([])
- const [showMarker,setShowMarker] = useState(true)
- const [showMarkerOSM, setShowMarkerOSM]=useState(false)
-//  const[city,setCity] = useState({lat:"",lng:"",error:""})
-const[sideMenu,setsideMenu] = useState(false)
-const[osmHeatMap,setosmHeatMap] = useState("")
-
-const [city,setcity] =useState("");
+  const [showMarker,setShowMarker] = useState(true)
+  const [showMarkerOSM, setShowMarkerOSM]=useState(false)
+  const[sideMenu,setsideMenu] = useState(false)
+  const[osmHeatMap,setosmHeatMap] = useState("")
+  const [city,setcity] =useState("");
 
   const updateAddNew = () =>{
     
@@ -45,9 +42,7 @@ const [city,setcity] =useState("");
   const handleAddMoreLoc = () => {
     setChecked(true);
     setShowMarker(false)
-
- 
-}
+  }
 
   const handleChange = (event) => {
     console.log(event.target.checked)
@@ -62,8 +57,7 @@ const [city,setcity] =useState("");
     }).catch((err) => {
         console.log(err)
     })
-}
-
+  }
 
 
   const getheatmapDailogBox =() =>{
@@ -72,16 +66,7 @@ const [city,setcity] =useState("");
 
   }
 
-  const getPinnedLocation =() => {
-    setChecked(false)
-    
-    
-    
-   
-   
-    console.log("pinned")
-  }
-
+  
   React.useEffect(()=> {
     getsideNavheatmapData()
     
@@ -98,7 +83,6 @@ const [city,setcity] =useState("");
   };
 
   
-
   const heatMapLocation = () => { 
     console.log('locations',heatmapData);
     
@@ -139,12 +123,11 @@ const [city,setcity] =useState("");
          onChange={handleChange}
          />map 
          </div>
-      
       </div>
-      <div className="container">
-      
 
-        <aside button className={`${isOpened ? "opened" : ""} drawer`}   onClick={()=>getPinnedLocation()}>Pinned Location
+      <div className="container">
+        
+        <aside button className={`${isOpened ? "opened" : ""} drawer`}   ><p onClick={()=> navigate("/openstreetmap")}>Pinned Location</p>
         <p button className={`${isOpened ? "opened" : ""} drawer`}  onClick={getheatmapDailogBox}>Heat Map </p>
         
         {isOpened ? heatMapLocation():null}</aside>
@@ -152,8 +135,6 @@ const [city,setcity] =useState("");
 
         <main className="main">{children}
         
-   
-
         {checked?<OpenStreetMap showMarker={showMarker}/>
          :heatMap? <HeatMap update={()=>updateAddNew()} handleAddMoreLoc={() =>handleAddMoreLoc()} osmHeatMap={osmHeatMap}/> 
          :sideMenu? <OsmHeatMap menudata={osmHeatMap} showMarkerOSM={showMarkerOSM}/> :<TabularView/> }

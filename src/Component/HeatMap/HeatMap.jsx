@@ -2,19 +2,13 @@ import React, { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import "leaflet.heat";
-// import { Button } from "@mui/material";
 import { getOsmHeatMapMarker } from "../../Service/AxioService";
-
-
 import "../HeatMap/HeatMap.scss";
 import Button from '@mui/material/Button';
 
 
 export default function HeatMap(props) {
 console.log(props.osmHeatMap.heatMapValue)
-    const[cityheatmap,setcityheatmap] =React.useState([])
-
- 
 
     useEffect(() => {
       getOsmHeatMapMarker().then((res) => {
@@ -23,7 +17,6 @@ console.log(props.osmHeatMap.heatMapValue)
           if(props.osmHeatMap.heatMapValue == obj.city.heatMapValue){
             return obj
           }
-          // console.log(obj.city.heatMapValue)
       })
       
       console.log(filteredArray)  
@@ -46,8 +39,6 @@ console.log(props.osmHeatMap.heatMapValue)
         : console.log(" hello");
         
       L.heatLayer(points).addTo(map);
-
-        // setcityheatmap(filteredArray)
       }).catch((error) => {console.log(error)})  
       
           }, [props.osmHeatMap.heatMapValue]);
@@ -61,8 +52,8 @@ console.log(props.osmHeatMap.heatMapValue)
           <Button className="addMap-btn"variant="contained" onClick={props.update} >Add new Heat Map</Button> 
          
           </div>
-    <div id="map" style={{ height: "100vh" }}>
-    </div>
+      <div id="map" style={{ height: "100vh" }}>
+      </div>
       </div>
     )   
   }

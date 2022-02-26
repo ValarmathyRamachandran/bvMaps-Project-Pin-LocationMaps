@@ -23,7 +23,7 @@ export default function DailogBox(props) {
     }
 
     const save = () =>{
-        if(props.editmapdata > 0 ){
+        if(props.editmapdata ){
           console.log(props.editmapdata.id)
             let data ={
               lat:props.getdetails.lat,

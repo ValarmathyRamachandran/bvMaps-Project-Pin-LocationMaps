@@ -4,8 +4,7 @@ import{ MapContainer,TileLayer,Marker, Popup  } from "react-leaflet";
 import osm from "../osm-providers";
 import L from "leaflet"; 
 import { useRef } from "react";
-import DailogBox from "../DialogBox/DailogBox";
-import { postOsmHeatMap, getOsmHeatMapMarker } from "../../Service/AxioService";
+import { postOsmHeatMap } from "../../Service/AxioService";
 
 const markerIcon = new L.Icon({
     iconUrl: require('../../asset/markerImage.png'),
@@ -19,12 +18,8 @@ const OsmHeatMap =(props) => {
    const [centre,setCentre] =useState({ lat: 13.084622, lng:80.248357});
    const [open, setOpen] = useState(false);
    const [latlngData,setlatlngData] =useState();
-
-
    const ZOOM_LEVEL = 8;
    const mapRef = useRef();
-
-  
 
     const getMap =(data) =>{
         setOpen(true);
@@ -48,11 +43,11 @@ const OsmHeatMap =(props) => {
         console.log('inside marker OSM');
         return (
             latlngData!=null && <Marker position={[latlngData.lat, latlngData.lng]} icon={markerIcon} >
-                                        <Popup>
-                                        <b >Pin</b>
-                                        </Popup>
+            <Popup>
+            <b >Pin</b>
+            </Popup>
             
-            </Marker> )
+        </Marker> )
     }
 
     return (
@@ -60,7 +55,7 @@ const OsmHeatMap =(props) => {
             <div className="bvMaps-main">
                 <div className="bvMaps-text">
                 
-                      <div className="map-container" > 
+                    <div className="map-container" > 
                       <MapContainer center={centre}
                                 zoom={ZOOM_LEVEL}
                                 ref={mapRef} 
@@ -74,15 +69,11 @@ const OsmHeatMap =(props) => {
 
                         <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution} />
                         {renderMarker()}
-                 {/* {true? renderMarker():null}  */}
-                      </MapContainer></div>
-                      <div>
-                      {/* {open?<DailogBox  />:null} */}
-                      
-      </div>
-      </div>
-      </div>
-    </>
+                      </MapContainer>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 

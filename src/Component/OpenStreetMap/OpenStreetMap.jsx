@@ -1,11 +1,9 @@
 import React,{ useState } from "react";
 import 'leaflet/dist/leaflet.css';
 import{ MapContainer,TileLayer ,Marker, Popup } from "react-leaflet";
-
 import L from "leaflet"; 
 import { useRef } from "react";
 import"./OpenStreetMap.scss";
-
 import { getmapLocation,postOsmHeatMap } from "../../Service/AxioService";
 import DailogBox from "../DialogBox/DailogBox";
 import osm from "../osm-providers";
@@ -34,9 +32,9 @@ const OpenStreetMap =(props) => {
    const mapRef = useRef();
 
 
-    const Listentoplace = (e) => {
-    setlocationdata({...locationdata,Place:e.target.value})
-    }
+    // const Listentoplace = (e) => {
+    // setlocationdata({...locationdata,Place:e.target.value})
+    // }
   
 
       const getMap =(data) =>{
@@ -51,8 +49,7 @@ const OpenStreetMap =(props) => {
         }
         setdetails(data1)
         console.log(data1)
-            
-  
+
       }
 
      
@@ -67,15 +64,15 @@ const OpenStreetMap =(props) => {
         getmapLocation().then((res) => {
         console.log(res)
       
-         if(props.editdata){
+        if(props.editdata){
           setlatlngData([props.editdata])
           seteditmapdata(props.editdata) 
           } else {
             setlatlngData(res.data)
             console.log(res.data)
           } 
-          }).catch((err) => {console.log(err)
-          })
+        }).catch((err) => {console.log(err)
+        })
       }
 
 
@@ -83,17 +80,7 @@ const OpenStreetMap =(props) => {
         getlocation()
       },[])
 
-      // const renderMarker = () => {
-      //   return (
-      //     getlatlngData.map((city,idx) => 
-      //       <Marker position={[city.lat, city.lng]} icon={markerIcon} key={idx}>
-      //                                   <Popup>
-      //                                   <b >Pin</b>
-      //                                   </Popup>
-            
-      //       </Marker> )
-      //   )
-      // }
+
     return (
         <>
             <div className="bvMaps-main">
@@ -111,20 +98,17 @@ const OpenStreetMap =(props) => {
                                 });
                               }}>
         <TileLayer url={osm.maptiler.url} attribution={osm.maptiler.attribution }/>
-                      {/* {props.showMarker? renderMarker():null} */}
-                      {latlngData.map((city,idx) => 
-                    <Marker position={[city.lat, city.lng]} icon={markerIcon} key={idx}>
-                                                <Popup>
-                                                <b >Pin</b>
-                                                </Popup>
-                    
-                    </Marker> )}
+          {latlngData.map((city,idx) => 
+          <Marker position={[city.lat, city.lng]} icon={markerIcon} key={idx}>
+            <Popup>
+              <b >Pin</b>
+              </Popup>
+          </Marker> )}
                       </MapContainer></div>
-                      <div>
-                      {open?<DailogBox getdetails={getdetails}  listenToDialogBox ={listenToDialogBox} editmapdata={editmapdata}  />: null}
-      
-      </div>
-      </div>
+          <div>
+          {open?<DailogBox getdetails={getdetails}  listenToDialogBox ={listenToDialogBox} editmapdata={editmapdata}  />: null}
+          </div>
+        </div>
       </div>
     </>
     )
