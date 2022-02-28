@@ -230,6 +230,11 @@
       "user": "vm@gmail.com",
       "heatMapValue": "Kerala",
       "id": 6
+    },
+    {
+      "user": "vm@gmail.com",
+      "heatMapValue": "Madhya Pradesh",
+      "id": 7
     }
   ],
   "SideMenuData": [
@@ -352,16 +357,6 @@
       "id": 20
     },
     {
-      "lat": 21.82070785387503,
-      "lng": 79.31468706158026,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Delhi",
-        "id": 4
-      },
-      "id": 21
-    },
-    {
       "lat": 13.108905124689748,
       "lng": 80.29308728583746,
       "city": {
@@ -370,16 +365,6 @@
         "id": 2
       },
       "id": 22
-    },
-    {
-      "lat": 13.563231744609348,
-      "lng": 79.73595417837586,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 23
     },
     {
       "lat": 10.286093695813923,
@@ -740,56 +725,6 @@
         "id": 4
       },
       "id": 59
-    },
-    {
-      "lat": 28.65203063036226,
-      "lng": 78.18671100125282,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Delhi",
-        "id": 4
-      },
-      "id": 60
-    },
-    {
-      "lat": 28.14950321154457,
-      "lng": 77.5277460564654,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Delhi",
-        "id": 4
-      },
-      "id": 61
-    },
-    {
-      "lat": 28.265682390146477,
-      "lng": 78.58208996812529,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Delhi",
-        "id": 4
-      },
-      "id": 62
-    },
-    {
-      "lat": 28.38173504322311,
-      "lng": 76.73698812272045,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Delhi",
-        "id": 4
-      },
-      "id": 63
-    },
-    {
-      "lat": 27.916766641249065,
-      "lng": 77.87919402701867,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Delhi",
-        "id": 4
-      },
-      "id": 64
     },
     {
       "lat": 12.983147716796578,
@@ -1230,66 +1165,6 @@
         "id": 6
       },
       "id": 108
-    },
-    {
-      "lat": 10.379765224421455,
-      "lng": 76.41848616102891,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 109
-    },
-    {
-      "lat": 9.882275493429953,
-      "lng": 76.61617564446516,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 110
-    },
-    {
-      "lat": 9.275622176792112,
-      "lng": 76.85779612422056,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 111
-    },
-    {
-      "lat": 10.6822006000841,
-      "lng": 76.44045165918851,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 112
-    },
-    {
-      "lat": 10.18518740926906,
-      "lng": 76.61617564446516,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 113
-    },
-    {
-      "lat": 9.405710041600036,
-      "lng": 76.85779612422056,
-      "city": {
-        "user": "vm@gmail.com",
-        "heatMapValue": "Kerala",
-        "id": 6
-      },
-      "id": 114
     },
     {
       "lat": 13.07947827722643,
@@ -2950,6 +2825,296 @@
         "id": 5
       },
       "id": 280
+    },
+    {
+      "lat": 28.304380682962783,
+      "lng": 77.28515714406969,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Delhi",
+        "id": 4
+      },
+      "id": 281
+    },
+    {
+      "lat": 28.57487404744697,
+      "lng": 77.54882901906969,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Delhi",
+        "id": 4
+      },
+      "id": 282
+    },
+    {
+      "lat": 28.22697003891834,
+      "lng": 77.37304776906969,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Delhi",
+        "id": 4
+      },
+      "id": 283
+    },
+    {
+      "lat": 28.57487404744697,
+      "lng": 78.42773526906969,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Delhi",
+        "id": 4
+      },
+      "id": 284
+    },
+    {
+      "lat": 13.068776734357694,
+      "lng": 77.93701171875001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Banglore",
+        "id": 5
+      },
+      "id": 285
+    },
+    {
+      "lat": 13.282718960896418,
+      "lng": 77.60742187500001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Banglore",
+        "id": 5
+      },
+      "id": 286
+    },
+    {
+      "lat": 12.983147716796578,
+      "lng": 77.54150390625001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Banglore",
+        "id": 5
+      },
+      "id": 287
+    },
+    {
+      "lat": 12.897489183755892,
+      "lng": 77.73925781250001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Banglore",
+        "id": 5
+      },
+      "id": 288
+    },
+    {
+      "lat": 12.983147716796578,
+      "lng": 77.56347656250001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Banglore",
+        "id": 5
+      },
+      "id": 289
+    },
+    {
+      "lat": 12.983147716796578,
+      "lng": 77.8271484375,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Banglore",
+        "id": 5
+      },
+      "id": 290
+    },
+    {
+      "lat": 23.89923127363233,
+      "lng": 77.75390669703484,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 291
+    },
+    {
+      "lat": 23.89923127363233,
+      "lng": 77.75390669703484,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 292
+    },
+    {
+      "lat": 23.89923127363233,
+      "lng": 77.75390669703484,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 293
+    },
+    {
+      "lat": 23.80209923180213,
+      "lng": 77.59277366101743,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 294
+    },
+    {
+      "lat": 23.631104994630626,
+      "lng": 77.81250022351743,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 295
+    },
+    {
+      "lat": 23.301901124188877,
+      "lng": 77.60742187500001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 296
+    },
+    {
+      "lat": 23.845649887659352,
+      "lng": 77.69531250000001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 297
+    },
+    {
+      "lat": 23.523700058824144,
+      "lng": 77.73925781250001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 298
+    },
+    {
+      "lat": 23.56398712845123,
+      "lng": 77.43164062500001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 299
+    },
+    {
+      "lat": 23.301901124188877,
+      "lng": 77.62939453125001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 300
+    },
+    {
+      "lat": 23.46324633155036,
+      "lng": 78.09082031250001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 301
+    },
+    {
+      "lat": 23.805449612314625,
+      "lng": 76.81640625000001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 302
+    },
+    {
+      "lat": 23.56398712845123,
+      "lng": 77.29980468750001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 303
+    },
+    {
+      "lat": 23.845649887659352,
+      "lng": 77.89306640625001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 304
+    },
+    {
+      "lat": 23.50355189742412,
+      "lng": 77.58544921875001,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 305
+    },
+    {
+      "lat": 23.389321653018403,
+      "lng": 77.81250089406969,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 306
+    },
+    {
+      "lat": 23.32208001137844,
+      "lng": 77.13018885732636,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 307
+    },
+    {
+      "lat": 22.917922936146045,
+      "lng": 78.09760227430898,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 308
+    },
+    {
+      "lat": 23.07973176244989,
+      "lng": 78.97706901702047,
+      "city": {
+        "user": "vm@gmail.com",
+        "heatMapValue": "Madhya Pradesh",
+        "id": 7
+      },
+      "id": 309
     }
   ]
 }

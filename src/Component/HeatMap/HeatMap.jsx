@@ -8,18 +8,14 @@ import Button from '@mui/material/Button';
 
 
 export default function HeatMap(props) {
-console.log(props.osmHeatMap.heatMapValue)
 
     useEffect(() => {
       getOsmHeatMapMarker().then((res) => {
-        console.log(res)
         var filteredArray = res.data.filter((obj) => {
           if(props.osmHeatMap.heatMapValue == obj.city.heatMapValue){
             return obj
           }
       })
-      
-      console.log(filteredArray)  
       var container = L.DomUtil.get('map');
       if(container != null){
         container._leaflet_id = null;
@@ -32,7 +28,6 @@ console.log(props.osmHeatMap.heatMapValue)
         
         const points = filteredArray
         ? filteredArray.map((p) => {
-          console.log(p.lat,p.lng)
             return [p.lat, p.lng];
           })
          
@@ -41,7 +36,7 @@ console.log(props.osmHeatMap.heatMapValue)
       L.heatLayer(points).addTo(map);
       }).catch((error) => {console.log(error)})  
       
-          }, [props.osmHeatMap.heatMapValue]);
+      }, [props.osmHeatMap.heatMapValue]);
 
   
     return(

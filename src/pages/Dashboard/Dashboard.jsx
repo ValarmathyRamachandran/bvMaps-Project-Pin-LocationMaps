@@ -32,16 +32,17 @@ export default function Dashboard ({ children ,props}) {
   const [city,setcity] =useState("");
 
   const updateAddNew = () =>{
-    
     setChecked(false)
-    setHeatMap(false)
-    setsideMenu(true)
+    setHeatMap(true)
     setShowAddNew(true)
   }
 
   const handleAddMoreLoc = () => {
-    setChecked(true);
+    setChecked(false);
     setShowMarker(false)
+    setHeatMap(false)
+    setsideMenu(true)
+  
   }
 
   const handleChange = (event) => {
@@ -50,9 +51,7 @@ export default function Dashboard ({ children ,props}) {
   };
 
   const getsideNavheatmapData = () => {
-    console.log('inside useeffect');
     getheatMap().then((res) => {
-        console.log(res)
         setheatmapData(res.data)
     }).catch((err) => {
         console.log(err)
@@ -73,8 +72,6 @@ export default function Dashboard ({ children ,props}) {
   },[])
 
   const sideMenuIconClick= (menudata) => {
-    console.log(menudata)
-    
     setHeatMap(true)
     setsideMenu(true)
     setChecked(false)
@@ -84,7 +81,6 @@ export default function Dashboard ({ children ,props}) {
 
   
   const heatMapLocation = () => { 
-    console.log('locations',heatmapData);
     
     return (
 <>
@@ -103,9 +99,7 @@ export default function Dashboard ({ children ,props}) {
   };
 
   const handleDialogHeatMap =(data) =>{
-    console.log(data)
     setcity(data)
-
   }
  
   return (
@@ -126,7 +120,7 @@ export default function Dashboard ({ children ,props}) {
       </div>
 
       <div className="container">
-        
+
         <aside button className={`${isOpened ? "opened" : ""} drawer`}   ><p onClick={()=> navigate("/openstreetmap")}>Pinned Location</p>
         <p button className={`${isOpened ? "opened" : ""} drawer`}  onClick={getheatmapDailogBox}>Heat Map </p>
         

@@ -9,10 +9,9 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { PinnedLocation, getmapLocation,Posteditdata } from '../../Service/AxioService';
 
 export default function DailogBox(props) {
-  console.log(props)
+ 
     const[Open,setOpen] = React.useState(true);
     const[placeValue,setplaceValue]  = React.useState("")
-    console.log(props)
 
     const handleClose = () => {
         setOpen(false);
@@ -24,7 +23,6 @@ export default function DailogBox(props) {
 
     const save = () =>{
         if(props.editmapdata ){
-          console.log(props.editmapdata.id)
             let data ={
               lat:props.getdetails.lat,
               lng:props.getdetails.lng,

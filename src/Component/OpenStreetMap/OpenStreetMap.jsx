@@ -62,14 +62,12 @@ const OpenStreetMap =(props) => {
 
       const getlocation = () =>{
         getmapLocation().then((res) => {
-        console.log(res)
-      
+  
         if(props.editdata){
           setlatlngData([props.editdata])
           seteditmapdata(props.editdata) 
           } else {
             setlatlngData(res.data)
-            console.log(res.data)
           } 
         }).catch((err) => {console.log(err)
         })

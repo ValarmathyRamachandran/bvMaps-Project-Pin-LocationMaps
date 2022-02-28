@@ -4,7 +4,8 @@ import{ MapContainer,TileLayer,Marker, Popup  } from "react-leaflet";
 import osm from "../osm-providers";
 import L from "leaflet"; 
 import { useRef } from "react";
-import { postOsmHeatMap } from "../../Service/AxioService";
+import { getOsmHeatMapMarker, postOsmHeatMap } from "../../Service/AxioService";
+import { useEffect } from "react";
 
 const markerIcon = new L.Icon({
     iconUrl: require('../../asset/markerImage.png'),
@@ -15,15 +16,15 @@ const markerIcon = new L.Icon({
 
 const OsmHeatMap =(props) => {
 
-   const [centre,setCentre] =useState({ lat: 13.084622, lng:80.248357});
+   const [centre,setCentre] =useState({ lat: 20.5937, lng:78.9629});
    const [open, setOpen] = useState(false);
-   const [latlngData,setlatlngData] =useState();
-   const ZOOM_LEVEL = 8;
+   const [latlngData,setlatlngData] =useState([]);
+   const ZOOM_LEVEL = 4;
    const mapRef = useRef();
+
 
     const getMap =(data) =>{
         setOpen(true);
-        console.log('inside getmap',props.menudata);
         const {lat, lng} = data.latlng
         let dataObj = {
             lat:lat,
@@ -31,23 +32,41 @@ const OsmHeatMap =(props) => {
             city:props.menudata
         };
         postOsmHeatMap(dataObj).then((res)=>{
-            console.log(res.data) 
-            setlatlngData(res.data)
+            setlatlngData( latlngData=>[...latlngData ,{"lat":res.data.lat, "lng": res.data.lng}])
+           
             }).catch((err)=> {
               console.log(err)})
               
     }
 
+    const getMarkerData =() =>{
+        
+    getOsmHeatMapMarker().then((res) =>{
+    var filteredArray = res.data.filter((obj) => {
+        if(props.menudata.heatMapValue == obj.city.heatMapValue){
+            return obj
+          } 
+        })
+        setlatlngData(filteredArray)
+    }).catch((err)=> {
+    console.log(err)
+    })
+    }
+
+
+    useEffect(() =>{
+        getMarkerData()
+    },[])
      
     const renderMarker = () => {
-        console.log('inside marker OSM');
         return (
-            latlngData!=null && <Marker position={[latlngData.lat, latlngData.lng]} icon={markerIcon} >
+            latlngData.map((city) =>
+            <Marker position={[city.lat, city.lng]} icon={markerIcon} >
             <Popup>
             <b >Pin</b>
             </Popup>
             
-        </Marker> )
+        </Marker> ))
     }
 
     return (
@@ -71,9 +90,9 @@ const OsmHeatMap =(props) => {
                         {renderMarker()}
                       </MapContainer>
                     </div>
-                </div>
-            </div>
-        </>
+    </div>
+</div>
+    </>
     )
 }
 

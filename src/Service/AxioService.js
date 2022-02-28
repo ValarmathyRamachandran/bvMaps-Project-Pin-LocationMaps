@@ -17,7 +17,6 @@ export const PinnedLocation = async (obj) => {
     return response
   }
 export const getmapLocation = async () =>{
-    console.log(id);
     let response =await axios.get(`http://localhost:3000/Location1?user=${id}`,
     content
     )
