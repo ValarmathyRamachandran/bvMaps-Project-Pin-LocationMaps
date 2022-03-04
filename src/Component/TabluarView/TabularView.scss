@@ -1,5 +1,53 @@
 .action-container{
-    display: flex;
+
+    width: 100%;
     justify-content: space-around;
+    margin-left: -20px;
+    
 }
 
+.css-11xur9t-MuiPaper-root-MuiTableContainer-root{
+    border-radius: 0px !important;
+}
+.editbtn {
+    width: 30%; 
+    display: inline-block;
+    height: 50px;
+    float: left; 
+    
+  }
+
+  .deletebtn {
+    display: inline-block;
+    width: 30%;
+    height: 50px;
+    // border: 1px solid green;
+  }
+
+  .mapbtn {
+    display: inline-block;
+    width: 30%;
+    height: 50px;
+    // border: 1px solid green;
+  }
+
+.EditLocationAltTwoToneIcon:hover + .editbtn{
+    cursor: pointer;
+    display: block;
+    outline: none;
+    
+}
+
+.DeleteTwoToneIcon:hover + .editbtn{
+    cursor: pointer;
+    display: block;
+    outline: none;
+    
+}
+
+.MapTwoToneIcon:hover + .editbtn{
+    cursor: pointer;
+    display: block;
+    outline: none;
+    
+}

@@ -14,6 +14,7 @@ import { List } from "@mui/material";
 import { getheatMap } from "../../Service/AxioService";
 import OsmHeatMap from "../../Component/OsmHeatMap/OsmHeatMap";
 import { useNavigate } from 'react-router-dom';
+import UserProfile from "../../Component/UserProfile/UserProfile";
 
 const label = { inputProps: { 'aria-label': 'Switch demo' } };
 
@@ -110,6 +111,7 @@ export default function Dashboard ({ children ,props}) {
           {isOpened ? <ChevronLeftIcon /> : <MenuIcon />}
         </div>
         <div className="header-title">{' '}bv Maps</div>
+        
 
         <div sx={{color:'blue' ,marginRight:'5vh'}}>Table
          <Switch {...label}  
@@ -117,6 +119,7 @@ export default function Dashboard ({ children ,props}) {
          onChange={handleChange}
          />map 
          </div>
+         <div className="exit-btn" title="Logout"> <UserProfile /></div>
       </div>
 
       <div className="container">

@@ -90,25 +90,25 @@ export default function TabularView(props) {
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
         <TableHead>
           <TableRow>
-            <StyledTableCell align="centre">Latitude&nbsp;</StyledTableCell>
-            <StyledTableCell align="centre">Longitude&nbsp;</StyledTableCell>
-            <StyledTableCell align="centre">Place&nbsp;</StyledTableCell>
-            <StyledTableCell align="centre">Action&nbsp;</StyledTableCell>
+            <StyledTableCell align="centre">Latitude</StyledTableCell>
+            <StyledTableCell align="centre">Longitude</StyledTableCell>
+            <StyledTableCell align="centre">Place</StyledTableCell>
+            <StyledTableCell align="centre">Action</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {tabledata.map((row) => (
             <StyledTableRow key={row.name}>
-              <StyledTableCell align="centre">{row.lat}</StyledTableCell>
+              <StyledTableCell align="left">{row.lat}</StyledTableCell>
               <StyledTableCell align="centre">{row.lng}</StyledTableCell>
               <StyledTableCell align="centre">{row.Place}</StyledTableCell>
              {row.lat != null ? 
-              <StyledTableCell align="centre">
+              <StyledTableCell align="left">
                 {row.Action}
               <div className='action-container'>
-                <a>< EditLocationAltTwoToneIcon   onClick={() => handleedit(row)} />
-                <DeleteTwoToneIcon onClick={() => removeData(row.id)}/>
-                <MapTwoToneIcon onClick={()=> navigate("/openstreetmap")} />
+                <a ><div className='editbtn' title='edit'>< EditLocationAltTwoToneIcon   onClick={() => handleedit(row)} /></div>
+                <div className='deletebtn' title='delete'><DeleteTwoToneIcon onClick={() => removeData(row.id)}/></div>
+                <div className='mapbtn' title='map view'><MapTwoToneIcon onClick={()=> navigate("/openstreetmap")} /></div>
 
                 </a>
               </div>
